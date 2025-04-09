@@ -1,0 +1,5 @@
+TMDB_TOKEN=Access "https://www.themoviedb.org/settings/api" to create you api token.
+TMDB_API=https://api.themoviedb.org/3/
+TMDB_POSTER_PATH=https://media.themoviedb.org/t/p/w220_and_h330_face
+TMDB_HIGHLIGHT_PATH=https://media.themoviedb.org/t/p/w533_and_h300_bestv2
+TMDB_PROFILE_PATH=https://media.themoviedb.org/t/p/w276_and_h350_face

@@ -1,0 +1,68 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    def pattern = Pattern.compile("(?:.*:)*[a-z]+([A-Z][A-Za-z]+)")
+    def flavor = ""
+
+    gradle.getStartParameter().getTaskNames().any { name ->
+        Matcher matcher = pattern.matcher(name)
+        if (matcher.find()) {
+            flavor = matcher.group(1).toLowerCase()
+            return true
+        }
+    }
+
+    return flavor
+}
+
+def readDotEnv = {
+    def envFile = "app.properties"
+
+    if (project.hasProperty("defaultEnvFile")) {
+        envFile = project.defaultEnvFile
+    }
+
+    if (System.env['ENVFILE']) {
+        envFile = System.env['ENVFILE']
+    } else if (project.hasProperty("envConfigFiles")) {
+        def flavor = getCurrentFlavor()
+
+        // use startsWith because sometimes the task is "generateDebugSources", so we want to match "debug"
+        project.ext.envConfigFiles.any { pair ->
+            if (flavor.startsWith(pair.key)) {
+                envFile = pair.value
+                return true
+            }
+        }
+    }
+
+    def env = [:]
+    println("Reading env from: $envFile")
+    println("Reading env from: $project.rootDir")
+    try {
+        new File("$project.rootDir/$envFile").eachLine { line ->
+            def matcher = (line =~ /^\s*(?:export\s+|)([\w\d.\-_]+)\s*=\s*['"]?(.*?)?['"]?\s*$/)
+            if (matcher.getCount() == 1 && matcher[0].size() == 3) {
+                env.put(matcher[0][1], matcher[0][2])
+            }
+        }
+    } catch (FileNotFoundException ignored) {
+        println("*** Missing app.properties file ****")
+    }
+    project.ext.set("env", env)
+}
+
+readDotEnv()
+
+android {
+    defaultConfig {
+        project.env.each { k, v ->
+            def escaped = v.replaceAll("%", "\\\\u0025")
+            println("**** property key **** $k *** value $v ")
+            buildConfigField "String", k, "\"$v\""
+            resValue "string", k, "\"$escaped\""
+        }
+    }
+}
