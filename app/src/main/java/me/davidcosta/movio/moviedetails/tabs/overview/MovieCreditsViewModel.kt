@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs
+package me.davidcosta.movio.moviedetails.tabs.overview
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

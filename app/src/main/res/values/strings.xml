@@ -34,4 +34,9 @@
     <!-- People Component -->
     <string name="people_image_content_description">Foto de %1s, personagem de %2s</string>
     <!-- endregion -->
+
+    <!-- Expandable Text Component -->
+    <string name="expandable_text_label_show_more">Ver mais</string>
+    <string name="expandable_text_label_show_less">Ver menos</string>
+    <!-- endregion -->
 </resources>

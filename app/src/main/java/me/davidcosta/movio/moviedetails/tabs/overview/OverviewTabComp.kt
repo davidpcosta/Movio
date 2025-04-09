@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs
+package me.davidcosta.movio.moviedetails.tabs.overview
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -53,8 +53,7 @@ fun OverviewTabComp(
             )
             ExpandableText(
                 text = movie.overview,
-                style = MaterialTheme.typography.bodyMedium,
-//                color = MaterialTheme.colorScheme.secondary,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier
                     .padding(top = MaterialTheme.spacing.medium)
                     .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
@@ -84,7 +83,7 @@ fun OverviewTabComp(
                     horizontal = MaterialTheme.spacing.horizontalMargin
                 ),
                 modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.small)
+                    .padding(top = MaterialTheme.spacing.medium)
             ) {
                 items(movieCreditsViewModel.moviePerson.value) { person ->
                     PersonComp(

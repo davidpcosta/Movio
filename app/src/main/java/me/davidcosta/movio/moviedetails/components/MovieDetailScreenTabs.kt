@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.utils.samples.SampleList
-import me.davidcosta.movio.moviedetails.tabs.OverviewTabComp
+import me.davidcosta.movio.moviedetails.tabs.overview.OverviewTabComp
 
 enum class MovieDetailScreenTabs {
     OVERVIEW,
