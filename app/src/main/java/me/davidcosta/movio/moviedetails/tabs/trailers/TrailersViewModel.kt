@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails
+package me.davidcosta.movio.moviedetails.tabs.trailers
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -9,29 +9,27 @@ import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.MovieDetailScreen
 import me.davidcosta.movio.core.api.services.RetrofitInstance
-import me.davidcosta.movio.core.domain.Movie
-import me.davidcosta.movio.core.domain.toMovie
+import me.davidcosta.movio.core.domain.Video
+import me.davidcosta.movio.core.domain.toVideoList
 
-class MovieDetailViewModel(
+class TrailersViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     private val args = savedStateHandle.toRoute<MovieDetailScreen>()
 
-
-    private var _movieDetail = mutableStateOf<Movie?>(null)
-    val movieDetail: State<Movie?> = _movieDetail
+    private var _movieVideos = mutableStateOf<List<Video>>(emptyList())
+    val movieVideos: State<List<Video>> = _movieVideos
 
     init {
-        fetchMovieDetail(args.movieId)
+        fetchMovieVideos(args.movieId)
     }
 
-    private fun fetchMovieDetail(movieId: Int) {
+    private fun fetchMovieVideos(movieId: Int) {
         viewModelScope.launch {
-            _movieDetail.value = RetrofitInstance.api
-                .fetchMovieDetails(movieId = movieId)
-                .toMovie()
-
+            _movieVideos.value = RetrofitInstance.api
+                .fetchMovieVideos(movieId = movieId)
+                .toVideoList()
         }
     }
 }

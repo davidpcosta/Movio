@@ -5,6 +5,7 @@ import me.davidcosta.movio.core.api.model.MovieDetailModel
 import me.davidcosta.movio.core.api.model.core.ResultModel
 import me.davidcosta.movio.core.api.model.TvShowModel
 import me.davidcosta.movio.core.api.model.MovieModel
+import me.davidcosta.movio.core.api.model.VideoResultModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -25,13 +26,23 @@ interface ApiService {
 
     @GET("movie/{movie_id}?language=pt-BR")
     suspend fun fetchMovieDetails(
-        @Path("movie_id") movieId: Long
+        @Path("movie_id") movieId: Int
     ) : MovieDetailModel
 
     @GET("movie/{movie_id}/credits?language=pt-BR")
     suspend fun fetchMovieCredits(
-        @Path("movie_id") movieId: Long
+        @Path("movie_id") movieId: Int
     ) : MovieCreditsModel
+
+    @GET("movie/{movie_id}/similar?language=pt-BR")
+    suspend fun fetchMovieSimilar(
+        @Path("movie_id") movieId: Int
+    ) : ResultModel<MovieModel>
+
+    @GET("movie/{movie_id}/videos?language=pt-BR")
+    suspend fun fetchMovieVideos(
+        @Path("movie_id") movieId: Int
+    ) : VideoResultModel
     // endregion
 
 

@@ -6,7 +6,7 @@ import me.davidcosta.movio.core.api.model.core.GenreModel
 import me.davidcosta.movio.core.api.model.core.LanguageModel
 
 class MovieDetailModel(
-    @SerializedName("id") val id: Long,
+    @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("original_title") val originalTitle: String,
     @SerializedName("poster_path") val posterPath: String,

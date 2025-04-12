@@ -55,5 +55,5 @@ object HomeScreen
 
 @Serializable
 data class MovieDetailScreen(
-    val movieId: Long
+    val movieId: Int
 )

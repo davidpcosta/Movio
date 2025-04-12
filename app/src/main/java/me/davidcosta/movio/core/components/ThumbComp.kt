@@ -1,4 +1,4 @@
-package me.davidcosta.movio.core.components.highlight
+package me.davidcosta.movio.core.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,10 +9,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,15 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.ScoreComp
-import me.davidcosta.movio.core.domain.Title
+import me.davidcosta.movio.core.domain.Video
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.Icons
+import me.davidcosta.movio.core.theme.Play
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun HighlightComp(
+fun ThumbComp(
     modifier: Modifier = Modifier,
-    highlightData: Title
+    thumbData: Video,
+    onClick: (String) -> Unit = {}
 ) {
     val width = dimensionResource(R.dimen.highlight_width)
     val height = dimensionResource(R.dimen.highlight_height)
@@ -51,24 +54,30 @@ fun HighlightComp(
                 .height(height)
         ) {
             AsyncImage(
-                model = highlightData.thumbPath,
-                contentDescription = "Movie poster",
+                model = thumbData.thumbPath,
+                contentDescription = thumbData.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable {  }
-            )
-            ScoreComp(
-                scoreData = highlightData.voteAverage,
-                modifier = Modifier
-                    .wrapContentSize(align = Alignment.TopEnd)
-                    .padding(MaterialTheme.spacing.medium)
+                    .clickable {
+                        onClick(thumbData.videoPath)
+                    }
             )
             Box(
+                contentAlignment = Alignment.TopCenter,
                 modifier = Modifier
                     .fillMaxSize()
                     .background(gradient())
             ) {
+                Icon(
+                    imageVector = Icons.Play,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier
+                        .padding(bottom = 40.dp)
+                        .size(40.dp)
+                        .align(Alignment.Center)
+                )
                 Column(
                     verticalArrangement = Arrangement.Bottom,
                     modifier = Modifier
@@ -76,20 +85,19 @@ fun HighlightComp(
                         .fillMaxSize()
                 ) {
                     Text(
-                        text = highlightData.title,
-                        style = MaterialTheme.typography.displaySmall,
-                        maxLines = 2,
+                        text = thumbData.name,
+                        style = MaterialTheme.typography.bodyLarge,
+                        maxLines = 1,
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
                     )
                     Text(
-                        text = highlightData.releaseYear,
+                        text = thumbData.publishedAt,
                         color = MaterialTheme.colorScheme.secondary,
-                        style = MaterialTheme.typography.titleSmall,
+                        style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
                     )
                 }
             }
-
         }
     }
 }
@@ -106,15 +114,15 @@ private fun gradient(): Brush {
 
 @Preview
 @Composable
-fun PreviewHighlightComp() {
+fun PreviewThumbComp() {
     AppTheme(changeSystemBarStyle = false) {
-        HighlightComp(
-            highlightData =  Title(
-                title = "Adolescense",
-                posterPath = "ponster.jpg",
-                thumbPath = "thumb.jpg",
-                voteAverage = "8,9",
-                releaseYear = "2025"
+        ThumbComp(
+            thumbData = Video(
+                id = "001",
+                thumbPath = "path",
+                name = "Filme de teste",
+                videoPath = "path",
+                publishedAt = "01 de abril de 2025"
             )
         )
     }

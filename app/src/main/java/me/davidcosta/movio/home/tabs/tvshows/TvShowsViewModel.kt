@@ -9,7 +9,7 @@ import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.domain.toShowPosterList
 
-class TvShowsTabViewModel : ViewModel() {
+class TvShowsViewModel : ViewModel() {
 
     private var _onTheAirTvShows = mutableStateOf<List<Poster>>(emptyList())
     val onTheAirTvShows: State<List<Poster>> = _onTheAirTvShows

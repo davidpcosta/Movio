@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails
+package me.davidcosta.movio.moviedetails.tabs.similar
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -9,29 +9,27 @@ import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.MovieDetailScreen
 import me.davidcosta.movio.core.api.services.RetrofitInstance
-import me.davidcosta.movio.core.domain.Movie
-import me.davidcosta.movio.core.domain.toMovie
+import me.davidcosta.movio.core.domain.Poster
+import me.davidcosta.movio.core.domain.toMoviePosterList
 
-class MovieDetailViewModel(
+class SimilarViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     private val args = savedStateHandle.toRoute<MovieDetailScreen>()
 
-
-    private var _movieDetail = mutableStateOf<Movie?>(null)
-    val movieDetail: State<Movie?> = _movieDetail
+    private var _similarMovies = mutableStateOf<List<Poster>>(emptyList())
+    val similarMovies: State<List<Poster>> = _similarMovies
 
     init {
-        fetchMovieDetail(args.movieId)
+        fetchSimilarMovies(args.movieId)
     }
 
-    private fun fetchMovieDetail(movieId: Int) {
+    private fun fetchSimilarMovies(movieId: Int) {
         viewModelScope.launch {
-            _movieDetail.value = RetrofitInstance.api
-                .fetchMovieDetails(movieId = movieId)
-                .toMovie()
-
+            _similarMovies.value = RetrofitInstance.api
+                .fetchMovieSimilar(movieId = movieId)
+                .toMoviePosterList()
         }
     }
 }

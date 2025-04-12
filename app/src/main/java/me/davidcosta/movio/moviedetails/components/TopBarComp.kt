@@ -22,11 +22,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DotSeparatorComp
 import me.davidcosta.movio.core.domain.Movie
+import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.StarRate
 import me.davidcosta.movio.core.theme.spacing
 
@@ -63,6 +65,7 @@ fun TopBarComp(
                     }
                     Text(
                         text = movie.title,
+                        textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.displayMedium
                     )
                     Row(
@@ -71,7 +74,7 @@ fun TopBarComp(
                             .padding(top = MaterialTheme.spacing.small)
                     ) {
                         Text(
-                            text = movie.releaseDate.year.toString(),
+                            text = movie.releaseYear,
                             style = MaterialTheme.typography.titleLarge
                         )
                         DotSeparatorComp(
@@ -87,7 +90,7 @@ fun TopBarComp(
                                 .padding(horizontal = MaterialTheme.spacing.small)
                         )
                         Icon(
-                            imageVector = me.davidcosta.movio.core.theme.Icons.StarRate,
+                            imageVector = Icons.StarRate,
                             tint = MaterialTheme.colorScheme.primary,
                             contentDescription = stringResource(R.string.movie_detail_screen_content_description_icon_rate),
                             modifier = Modifier

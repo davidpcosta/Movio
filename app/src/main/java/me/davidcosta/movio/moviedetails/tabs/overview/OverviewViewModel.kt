@@ -12,7 +12,7 @@ import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Person
 import me.davidcosta.movio.core.domain.toCast
 
-class MovieCreditsViewModel(
+class OverviewViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
@@ -25,7 +25,7 @@ class MovieCreditsViewModel(
         fetchMovieCredits(args.movieId)
     }
 
-    private fun fetchMovieCredits(movieId: Long) {
+    private fun fetchMovieCredits(movieId: Int) {
         viewModelScope.launch {
             _moviePerson.value = RetrofitInstance.api
                 .fetchMovieCredits(movieId = movieId)

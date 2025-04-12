@@ -9,7 +9,7 @@ import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.domain.toMoviePosterList
 
-class MoviesTabViewModel : ViewModel() {
+class MoviesViewModel : ViewModel() {
 
     private var _nowPlayingTitles = mutableStateOf<List<Poster>>(emptyList())
     val nowPlayingTitles: State<List<Poster>> = _nowPlayingTitles

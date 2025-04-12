@@ -11,8 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import me.davidcosta.movio.core.domain.Title
-import me.davidcosta.movio.core.utils.samples.SampleData
-import me.davidcosta.movio.core.utils.samples.TitleList
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
 
@@ -34,7 +32,7 @@ fun HighlightRailComp(
                 horizontalArrangement = Arrangement.Center
             ) {
                 HighlightComp(
-                    titleData = railHighlightData[page]
+                    highlightData = railHighlightData[page]
                 )
             }
 
@@ -47,7 +45,15 @@ fun HighlightRailComp(
 fun PreviewRailHighlightComp() {
     AppTheme(changeSystemBarStyle = false) {
         HighlightRailComp(
-            railHighlightData = SampleData.TitleList
+            railHighlightData = listOf(
+                Title(
+                    title = "Adolescense",
+                    posterPath = "ponster.jpg",
+                    thumbPath = "thumb.jpg",
+                    voteAverage = "8,9",
+                    releaseYear = "2025"
+                )
+            )
         )
     }
 }

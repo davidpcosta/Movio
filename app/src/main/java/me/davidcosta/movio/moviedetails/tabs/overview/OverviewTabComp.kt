@@ -27,69 +27,64 @@ import me.davidcosta.movio.core.theme.spacing
 
 @Composable
 fun OverviewTabComp(
-    modifier: Modifier = Modifier,
     navHostController: NavHostController,
     movie: Movie
-
 ) {
-    val movieCreditsViewModel = viewModel<MovieCreditsViewModel>()
+    val overviewViewModel = viewModel<OverviewViewModel>()
 
-    Box(
-        modifier = modifier
+    Column(
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.Top,
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
-        Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Top,
+        Text(
+            text = stringResource(R.string.movie_detail_screen_tab_related_label_overview),
+            style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .padding(top = MaterialTheme.spacing.large)
+                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+        )
+        ExpandableText(
+            text = movie.overview.takeUnless { it.isNullOrBlank() }
+                ?: stringResource(R.string.movie_detail_screen_tab_related_label_overview_unavailable),
+            textStyle = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.medium)
+                .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
+        )
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            contentPadding = PaddingValues(
+                horizontal = MaterialTheme.spacing.horizontalMargin
+            ),
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.medium)
         ) {
-            Text(
-                text = stringResource(R.string.movie_detail_screen_tab_related_label_overview),
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.large)
-                    .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-            )
-            ExpandableText(
-                text = movie.overview,
-                textStyle = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.medium)
-                    .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
-            )
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-                contentPadding = PaddingValues(
-                    horizontal = MaterialTheme.spacing.horizontalMargin
-                ),
-                modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.medium)
-            ) {
-                items(movie.genres) { genre ->
-                    GenreComp(text = genre )
-                }
+            items(movie.genres) { genre ->
+                GenreComp(text = genre )
             }
-            Text(
-                text = stringResource(R.string.movie_detail_screen_tab_related_label_cast_and_crew),
-                style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.large)
-                    .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-            )
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-                contentPadding = PaddingValues(
-                    horizontal = MaterialTheme.spacing.horizontalMargin
-                ),
-                modifier = Modifier
-                    .padding(top = MaterialTheme.spacing.medium)
-            ) {
-                items(movieCreditsViewModel.moviePerson.value) { person ->
-                    PersonComp(
-                        personData = person
-                    )
-                }
+        }
+        Text(
+            text = stringResource(R.string.movie_detail_screen_tab_related_label_cast_and_crew),
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.large)
+                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+        )
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            contentPadding = PaddingValues(
+                horizontal = MaterialTheme.spacing.horizontalMargin
+            ),
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.medium)
+        ) {
+            items(overviewViewModel.moviePerson.value) { person ->
+                PersonComp(
+                    personData = person
+                )
             }
         }
     }

@@ -8,10 +8,23 @@
     <!-- region : Home -->
     <string name="home_screen_tab_movies">Filmes</string>
     <string name="home_screen_tab_tv_shows">Series</string>
-    <string name="home_screen_tab_series">Séries</string>
-    <string name="home_screen_tab_anime">Anime</string>
     <string name="home_screen_toolbar_content_description_icon_search">Ícone de busca</string>
     <!-- endregion -->
+
+    <!-- region: Home > Tab Movies-->
+    <string name="home_screen_tab_movies_now_playing">Em cartaz</string>
+    <string name="home_screen_tab_movies_popular">Populares</string>
+    <string name="home_screen_tab_movies_top_rated">Melhores notas</string>
+    <string name="home_screen_tab_movies_upcoming">Próximos lançamentos</string>
+    <!-- endregion -->
+
+    <!-- region: Home > Tab TV Shows -->
+    <string name="home_screen_tab_tv_shows_airing_today">Em exibição hoje</string>
+    <string name="home_screen_tab_tv_shows_on_the_air">Na TV</string>
+    <string name="home_screen_tab_tv_shows_popular">Populares</string>
+    <string name="home_screen_tab_tv_shows_top_rated">Mais bem avaliados</string>
+    <!-- endregion -->
+
 
     <!-- region: Movie Detail -->
     <string name="movie_detail_screen_content_description_icon_rate">Ícone de busca</string>
@@ -20,6 +33,7 @@
     <string name="movie_detail_screen_tab_trailers">Trailers</string>
     <string name="movie_detail_screen_tab_related">Similares</string>
     <string name="movie_detail_screen_tab_related_label_overview">Sinopse</string>
+    <string name="movie_detail_screen_tab_related_label_overview_unavailable">Sinopse indisponível.</string>
     <string name="movie_detail_screen_tab_related_label_cast_and_crew">Elenco principal</string>
     <!-- endregion -->
 

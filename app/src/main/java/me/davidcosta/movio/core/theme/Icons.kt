@@ -18,3 +18,6 @@ val Icons.Arrow: ImageVector
 
 val Icons.StarRate: ImageVector
     @Composable get() = ImageVector.vectorResource(id = R.drawable.ic_star_rate)
+
+val Icons.Play: ImageVector
+    @Composable get() = ImageVector.vectorResource(id = R.drawable.ic_play)

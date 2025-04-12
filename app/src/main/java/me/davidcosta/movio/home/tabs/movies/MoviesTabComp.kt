@@ -2,29 +2,25 @@ package me.davidcosta.movio.home.tabs.movies
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.MovieDetailScreen
+import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.poster.PosterRailComp
-import me.davidcosta.movio.core.components.highlight.HighlightRailComp
-import me.davidcosta.movio.core.utils.samples.SampleData
-import me.davidcosta.movio.core.utils.samples.TitleList
-import me.davidcosta.movio.core.theme.spacing
 
 @Composable
 fun MoviesTabComp(
     navController: NavHostController
 ) {
 
-    val viewModel = viewModel<MoviesTabViewModel>()
+    val viewModel = viewModel<MoviesViewModel>()
 
-    val onPosterClick = { id: Long ->
+    val onPosterClick = { id: Int ->
         navController.navigate(MovieDetailScreen(
             movieId = id
         ))
@@ -35,28 +31,23 @@ fun MoviesTabComp(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-        HighlightRailComp(
-            railHighlightData = SampleData.TitleList,
-            modifier = Modifier
-                .padding(top = MaterialTheme.spacing.large)
-        )
         PosterRailComp(
-            posterRailTitle = "Em cartaz",
+            posterRailTitle = stringResource(R.string.home_screen_tab_movies_now_playing),
             posterRailData = viewModel.nowPlayingTitles.value,
             onPosterClick = onPosterClick
         )
         PosterRailComp(
-            posterRailTitle = "Melhores notas",
+            posterRailTitle = stringResource(R.string.home_screen_tab_movies_top_rated),
             posterRailData = viewModel.topRatedTitles.value,
             onPosterClick = onPosterClick
         )
         PosterRailComp(
-            posterRailTitle = "Populares",
+            posterRailTitle = stringResource(R.string.home_screen_tab_movies_popular),
             posterRailData = viewModel.popularTitles.value,
             onPosterClick = onPosterClick
         )
         PosterRailComp(
-            posterRailTitle = "Próximos lançamentos",
+            posterRailTitle = stringResource(R.string.home_screen_tab_movies_upcoming),
             posterRailData = viewModel.upcomingTitles.value
         )
     }

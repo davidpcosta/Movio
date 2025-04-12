@@ -3,7 +3,7 @@ package me.davidcosta.movio.core.api.model
 import com.google.gson.annotations.SerializedName
 
 data class TvShowModel(
-    @SerializedName("id") val id: Long,
+    @SerializedName("id") val id: Int,
     @SerializedName("original_name") val originalName: String,
     @SerializedName("name") val name: String,
     @SerializedName("poster_path") val posterPath: String?,
