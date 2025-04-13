@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
-import me.davidcosta.movio.core.theme.Search
 import me.davidcosta.movio.core.theme.spacing
 
 @ExperimentalMaterial3Api

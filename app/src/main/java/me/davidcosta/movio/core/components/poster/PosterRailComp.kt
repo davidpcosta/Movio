@@ -20,11 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.theme.AppTheme
-import me.davidcosta.movio.core.theme.Arrow
 import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
@@ -37,7 +35,7 @@ fun PosterRailComp(
     onPosterClick: (Int) -> Unit = {}
 ) {
     Column (
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
@@ -116,9 +114,7 @@ fun PreviewPosterRailComp() {
                 Poster(
                     id = 1,
                     title = "Adolescense",
-                    posterPath = "poster.jpg",
-                    voteAverage = "8,9",
-                    releaseYear = "2025"
+                    posterPath = "poster.jpg"
                 )
             )
         )

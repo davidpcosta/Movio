@@ -31,7 +31,6 @@ import me.davidcosta.movio.core.components.core.DotSeparatorComp
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
-import me.davidcosta.movio.core.theme.StarRate
 import me.davidcosta.movio.core.theme.spacing
 
 @ExperimentalMaterial3Api

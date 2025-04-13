@@ -32,7 +32,6 @@ import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Video
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
-import me.davidcosta.movio.core.theme.Play
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable

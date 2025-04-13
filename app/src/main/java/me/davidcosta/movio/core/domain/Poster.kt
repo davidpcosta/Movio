@@ -3,16 +3,12 @@ package me.davidcosta.movio.core.domain
 import me.davidcosta.movio.core.api.model.core.ResultModel
 import me.davidcosta.movio.core.api.model.TvShowModel
 import me.davidcosta.movio.core.api.model.MovieModel
-import me.davidcosta.movio.core.utils.formatYear
-import me.davidcosta.movio.core.utils.formattedVoteAverage
 import me.davidcosta.movio.core.utils.fullPosterPath
 
 class Poster(
     val id: Int,
     val title: String,
-    val posterPath: String,
-    val voteAverage: String,
-    val releaseYear: String
+    val posterPath: String
 )
 
 fun ResultModel<MovieModel>.toMoviePosterList() =
@@ -25,9 +21,7 @@ fun MovieModel.toPoster() =
         Poster(
             id = movie.id,
             title = movie.title,
-            releaseYear = movie.releaseDate.formatYear(),
-            posterPath = movie.posterPath.fullPosterPath,
-            voteAverage = movie.voteAverage.formattedVoteAverage
+            posterPath = movie.posterPath.fullPosterPath
         )
     }
 
@@ -41,8 +35,6 @@ fun TvShowModel.toPoster() =
         Poster(
             id = show.id,
             title = show.name,
-            releaseYear = "2025",
-            posterPath = show.posterPath?.fullPosterPath.orEmpty(),
-            voteAverage = show.voteAverage.formattedVoteAverage
+            posterPath = show.posterPath?.fullPosterPath.orEmpty()
         )
     }

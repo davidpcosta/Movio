@@ -68,9 +68,7 @@ fun PreviewPosterComp() {
             posterData = Poster(
                 id = 1,
                 title = "Adolescense",
-                posterPath = "poster.jpg",
-                voteAverage = "8,9",
-                releaseYear = "2025"
+                posterPath = "poster.jpg"
             )
         )
     }
