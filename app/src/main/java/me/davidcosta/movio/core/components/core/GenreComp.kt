@@ -17,15 +17,16 @@ fun GenreComp(
 ) {
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
+        color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = modifier
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
                 .padding(
                     horizontal = MaterialTheme.spacing.medium,
-                    vertical = MaterialTheme.spacing.small
+                    vertical = MaterialTheme.spacing.tiny
                 )
         )
     }

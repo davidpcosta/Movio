@@ -14,6 +14,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,12 +23,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DotSeparatorComp
 import me.davidcosta.movio.core.domain.Movie
+import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.StarRate
 import me.davidcosta.movio.core.theme.spacing
@@ -45,11 +47,12 @@ fun TopBarComp(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
+                        .padding(end = 12.dp)
                 ) {
                     Surface(
                         shape = MaterialTheme.shapes.large,
                         modifier = Modifier
-                            .padding(vertical = MaterialTheme.spacing.large)
+                            .padding(top = MaterialTheme.spacing.large)
                     )  {
                         AsyncImage(
                             model = movie.posterPath,
@@ -63,11 +66,6 @@ fun TopBarComp(
                                 .height(dimensionResource(R.dimen.movie_detail_poster_height))
                         )
                     }
-                    Text(
-                        text = movie.title,
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.displayMedium
-                    )
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -75,7 +73,7 @@ fun TopBarComp(
                     ) {
                         Text(
                             text = movie.releaseYear,
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleMedium
                         )
                         DotSeparatorComp(
                             modifier = Modifier
@@ -83,7 +81,7 @@ fun TopBarComp(
                         )
                         Text(
                             text = movie.runtime,
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleMedium
                         )
                         DotSeparatorComp(
                             modifier = Modifier
@@ -99,14 +97,14 @@ fun TopBarComp(
                         )
                         Text(
                             text = movie.voteAverage,
-                            style = MaterialTheme.typography.titleLarge
+                            style = MaterialTheme.typography.titleMedium
                         )
                     }
                 }
             }
         },
         scrollBehavior = scrollBehavior,
-        expandedHeight = 450.dp,
+        expandedHeight = 360.dp,
         colors = TopAppBarColors(
             containerColor = Color.Transparent,
             scrolledContainerColor = Color.Transparent,
@@ -117,4 +115,24 @@ fun TopBarComp(
         modifier = modifier
             .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
     )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun PreviewTopBarComp() {
+    AppTheme(changeSystemBarStyle = false) {
+        TopBarComp(
+            scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),
+            movie = Movie(
+                title = "Adolescense",
+                posterPath = "poster.jpg",
+                releaseYear = "2025",
+                overview = "A fada fala alfafa.",
+                runtime = "1h56m",
+                voteAverage = "2,9",
+                genres = emptyList()
+            )
+        )
+    }
 }

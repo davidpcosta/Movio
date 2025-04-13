@@ -15,17 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.theme.AppTheme
-
-sealed class PosterSize(val width: Dp, val height: Dp) {
-    data object Small : PosterSize(92.dp, 138.dp)
-    data object Medium : PosterSize(160.dp, 240.dp)
-}
 
 @Composable
 fun PosterComp(
