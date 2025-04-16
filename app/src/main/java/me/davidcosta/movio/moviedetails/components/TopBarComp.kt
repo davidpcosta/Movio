@@ -125,6 +125,7 @@ private fun PreviewTopBarComp() {
             scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),
             movie = Movie(
                 title = "Adolescense",
+                originalTitle = "Adolescense",
                 posterPath = "poster.jpg",
                 releaseYear = "2025",
                 overview = "A fada fala alfafa.",

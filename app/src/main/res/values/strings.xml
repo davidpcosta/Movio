@@ -35,6 +35,9 @@
     <string name="movie_detail_screen_tab_related_label_overview">Sinopse</string>
     <string name="movie_detail_screen_tab_related_label_overview_unavailable">Sinopse indisponível.</string>
     <string name="movie_detail_screen_tab_related_label_cast_and_crew">Elenco principal</string>
+
+    <string name="movie_detail_screen_tab_overview_label_title">Título</string>
+    <string name="movie_detail_screen_tab_overview_label_original_title">Título original</string>
     <!-- endregion -->
 
     <!-- Poster Component -->

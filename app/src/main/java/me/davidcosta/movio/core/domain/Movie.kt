@@ -8,6 +8,7 @@ import me.davidcosta.movio.core.utils.fullPosterPath
 
 class Movie(
     val title: String,
+    val originalTitle: String,
     val posterPath: String,
     val releaseYear: String,
     val overview: String?,
@@ -19,6 +20,7 @@ class Movie(
 fun MovieDetailModel.toMovie() =
     Movie(
         title = this.title,
+        originalTitle = this.originalTitle,
         posterPath = this.posterPath.fullPosterPath,
         releaseYear = this.releaseDate.formatYear(),
         overview = this.overview,

@@ -1,9 +1,13 @@
 package me.davidcosta.movio.moviedetails.tabs.overview
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -14,14 +18,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.ExpandableText
 import me.davidcosta.movio.core.components.core.GenreComp
 import me.davidcosta.movio.core.components.person.PersonComp
 import me.davidcosta.movio.core.domain.Movie
+import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
@@ -38,6 +47,42 @@ fun OverviewTabComp(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.large)
+                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                .fillMaxWidth()
+        ) {
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = stringResource(R.string.movie_detail_screen_tab_overview_label_title),
+                    style = MaterialTheme.typography.headlineLarge,
+                )
+                Text(
+                    modifier = Modifier.padding(top = MaterialTheme.spacing.small),
+                    text = movie.title,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = stringResource(R.string.movie_detail_screen_tab_overview_label_original_title),
+                    style = MaterialTheme.typography.headlineLarge,
+                )
+                Text(
+                    modifier = Modifier.padding(top = MaterialTheme.spacing.small),
+                    text = movie.originalTitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
+        }
         Text(
             text = stringResource(R.string.movie_detail_screen_tab_related_label_overview),
             style = MaterialTheme.typography.headlineLarge,
@@ -50,7 +95,7 @@ fun OverviewTabComp(
                 ?: stringResource(R.string.movie_detail_screen_tab_related_label_overview_unavailable),
             textStyle = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.medium)
+                .padding(top = MaterialTheme.spacing.small)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
         )
         LazyRow(
@@ -86,5 +131,25 @@ fun OverviewTabComp(
                 )
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewOverviewTab() {
+    AppTheme(changeSystemBarStyle = false) {
+        OverviewTabComp(
+            navHostController = rememberNavController(),
+            movie = Movie(
+                title = "Adolescencia",
+                originalTitle = "Adolescense",
+                posterPath = "poster.jpg",
+                releaseYear = "2025",
+                overview = "A fada fala alfafa.",
+                runtime = "2h25m",
+                voteAverage = "8,5",
+                genres = listOf("Drama", "Açãio")
+            )
+        )
     }
 }
