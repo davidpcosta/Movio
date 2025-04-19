@@ -1,4 +1,4 @@
-package me.davidcosta.movio.home.components
+package me.davidcosta.movio.home.tabs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable

@@ -23,11 +23,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.home.components.TabsComp
-import me.davidcosta.movio.home.components.TopBarComp
+import me.davidcosta.movio.home.tabs.TabsComp
 import me.davidcosta.movio.core.theme.AppTheme
-import me.davidcosta.movio.home.components.HomeScreenTabs
-import me.davidcosta.movio.home.components.Screen
+import me.davidcosta.movio.home.tabs.HomeScreenTabs
+import me.davidcosta.movio.home.tabs.Screen
 
 
 @OptIn(ExperimentalMaterial3Api::class)

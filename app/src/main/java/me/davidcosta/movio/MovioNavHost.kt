@@ -6,7 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kotlinx.serialization.Serializable
 import me.davidcosta.movio.home.HomeScreen
-import me.davidcosta.movio.moviedetails.MovieDetailScreen
+import me.davidcosta.movio.moviedetails.MovieDetailsScreen
+import me.davidcosta.movio.person.PersonDetailsScreen
 
 @Composable
 fun MovioNavHost(navHosController: NavHostController) {
@@ -17,8 +18,11 @@ fun MovioNavHost(navHosController: NavHostController) {
         composable<HomeScreen> {
             HomeScreen(navHosController)
         }
-        composable<MovieDetailScreen> {
-            MovieDetailScreen(navHosController)
+        composable<MovieDetailsScreen> {
+            MovieDetailsScreen(navHosController)
+        }
+        composable<PersonDetailsScreen> {
+            PersonDetailsScreen(navHosController)
         }
     }
 }
@@ -27,11 +31,16 @@ fun MovioNavHost(navHosController: NavHostController) {
 object HomeScreen
 
 @Serializable
-data class MovieDetailScreen(
+data class MovieDetailsScreen(
     val movieId: Int
 )
 
 @Serializable
-data class TvShowDetailScreen(
+data class TvShowDetailsScreen(
     val tvShowId: Int
+)
+
+@Serializable
+data class PersonDetailsScreen(
+    val personId: Int
 )

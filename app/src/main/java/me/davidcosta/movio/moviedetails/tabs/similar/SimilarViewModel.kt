@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.MovieDetailScreen
+import me.davidcosta.movio.MovieDetailsScreen
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.domain.toMoviePosterList
@@ -16,7 +16,7 @@ class SimilarViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val args = savedStateHandle.toRoute<MovieDetailScreen>()
+    private val args = savedStateHandle.toRoute<MovieDetailsScreen>()
 
     private var _similarMovies = mutableStateOf<List<Poster>>(emptyList())
     val similarMovies: State<List<Poster>> = _similarMovies

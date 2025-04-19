@@ -11,7 +11,7 @@ class Title(
     val posterPath: String,
     val thumbPath: String,
     val voteAverage: String,
-    val releaseYear: String
+    val releaseYear: String?
 )
 
 fun ResultModel<MovieModel>.toTitleList() =

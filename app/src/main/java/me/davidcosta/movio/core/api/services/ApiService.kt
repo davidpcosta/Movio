@@ -1,11 +1,13 @@
 package me.davidcosta.movio.core.api.services
 
 import me.davidcosta.movio.core.api.model.MovieCreditsModel
-import me.davidcosta.movio.core.api.model.MovieDetailModel
-import me.davidcosta.movio.core.api.model.core.ResultModel
-import me.davidcosta.movio.core.api.model.TvShowModel
+import me.davidcosta.movio.core.api.model.MovieDetailsModel
 import me.davidcosta.movio.core.api.model.MovieModel
+import me.davidcosta.movio.core.api.model.TvShowModel
 import me.davidcosta.movio.core.api.model.VideoResultModel
+import me.davidcosta.movio.core.api.model.core.ResultModel
+import me.davidcosta.movio.core.api.model.person.PersonCreditsResultModel
+import me.davidcosta.movio.core.api.model.person.PersonModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -27,7 +29,7 @@ interface ApiService {
     @GET("movie/{movie_id}?language=pt-BR")
     suspend fun fetchMovieDetails(
         @Path("movie_id") movieId: Int
-    ) : MovieDetailModel
+    ) : MovieDetailsModel
 
     @GET("movie/{movie_id}/credits?language=pt-BR")
     suspend fun fetchMovieCredits(
@@ -58,5 +60,17 @@ interface ApiService {
 
     @GET("tv/top_rated?language=pt-BR")
     suspend fun fetchTopRatedShows() : ResultModel<TvShowModel>
+    // endregion
+
+    // region: Person
+    @GET("person/{person_id}?language=pt-BR")
+    suspend fun fetchPersonDetails(
+        @Path("person_id") personId: Int
+    ) : PersonModel
+
+    @GET("person/{person_id}/combined_credits?language=pt-BR")
+    suspend fun fetchPersonCredits(
+        @Path("person_id") personId: Int
+    ) : PersonCreditsResultModel
     // endregion
 }

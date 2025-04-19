@@ -1,21 +1,26 @@
 package me.davidcosta.movio.core.domain
 
-import me.davidcosta.movio.core.api.model.MovieCreditsModel
+import me.davidcosta.movio.core.api.model.person.PersonModel
+import me.davidcosta.movio.core.utils.formatMediumDate
 import me.davidcosta.movio.core.utils.fullProfilePath
+import me.davidcosta.movio.core.utils.orNotAvailable
 
 data class Person(
     val id: Int,
-    val profilePath: String?,
+    val profilePath: String,
     val name: String,
-    val character: String
+    val birthday: String?,
+    val placeOfBirth: String,
 )
 
-fun MovieCreditsModel.toCast() =
-    this.cast.map {
+fun PersonModel.toPerson() =
+    this.let {
         Person(
             id = it.id,
-            profilePath = it.profilePath?.fullProfilePath,
+            profilePath = it.profilePath.fullProfilePath,
             name = it.name,
-            character = it.character
+            birthday = it.birthday.formatMediumDate(),
+            placeOfBirth = it.placeOfBirth.orNotAvailable(),
+
         )
     }

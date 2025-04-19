@@ -1,7 +1,5 @@
 package me.davidcosta.movio.moviedetails.tabs.overview
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,15 +16,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import me.davidcosta.movio.PersonDetailsScreen
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.ExpandableText
 import me.davidcosta.movio.core.components.core.GenreComp
 import me.davidcosta.movio.core.components.person.PersonComp
 import me.davidcosta.movio.core.domain.Movie
@@ -90,10 +86,11 @@ fun OverviewTabComp(
                 .padding(top = MaterialTheme.spacing.large)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
         )
-        ExpandableText(
-            text = movie.overview.takeUnless { it.isNullOrBlank() }
+        Text(
+            text = movie.overview
+                .takeUnless { it.isNullOrBlank() }
                 ?: stringResource(R.string.movie_detail_screen_tab_related_label_overview_unavailable),
-            textStyle = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.small)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
@@ -125,9 +122,14 @@ fun OverviewTabComp(
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
-            items(overviewViewModel.moviePerson.value) { person ->
+            items(overviewViewModel.movieCharacter.value) { person ->
                 PersonComp(
-                    personData = person
+                    characterData = person,
+                    onClick = {
+                        navHostController.navigate(PersonDetailsScreen(
+                            personId = person.id
+                        ))
+                    }
                 )
             }
         }

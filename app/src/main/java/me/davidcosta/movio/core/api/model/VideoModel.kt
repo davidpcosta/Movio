@@ -1,6 +1,7 @@
 package me.davidcosta.movio.core.api.model
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDateTime
 
 data class VideoModel(
     @SerializedName("id") val id: String,
@@ -12,5 +13,5 @@ data class VideoModel(
     @SerializedName("size") val size: Int,
     @SerializedName("type") val type: String,
     @SerializedName("official") val official: Boolean,
-    @SerializedName("published_at") val publishedAt: String
+    @SerializedName("published_at") val publishedAt: LocalDateTime?
 )

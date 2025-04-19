@@ -4,8 +4,9 @@ import com.google.gson.annotations.SerializedName
 import me.davidcosta.movio.core.api.model.core.CountryModel
 import me.davidcosta.movio.core.api.model.core.GenreModel
 import me.davidcosta.movio.core.api.model.core.LanguageModel
+import java.time.LocalDate
 
-class MovieDetailModel(
+class MovieDetailsModel(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("original_title") val originalTitle: String,
@@ -22,7 +23,7 @@ class MovieDetailModel(
     @SerializedName("popularity") val popularity: Float,
     @SerializedName("production_companies") val productionCompanies: List<CompanyModel>,
     @SerializedName("production_countries") val productionCountries: List<CountryModel>,
-    @SerializedName("release_date") val releaseDate: String,
+    @SerializedName("release_date") val releaseDate: LocalDate?,
     @SerializedName("revenue") val revenue: Int,
     @SerializedName("runtime") val runtime: Int,
     @SerializedName("spoken_languages") val spokenLanguages: List<LanguageModel>,

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.home.components
+package me.davidcosta.movio.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

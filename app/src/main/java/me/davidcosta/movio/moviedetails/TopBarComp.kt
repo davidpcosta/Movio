@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.components
+package me.davidcosta.movio.moviedetails
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,6 +32,7 @@ import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.utils.orNotAvailable
 
 @ExperimentalMaterial3Api
 @Composable
@@ -71,7 +72,7 @@ fun TopBarComp(
                             .padding(top = MaterialTheme.spacing.small)
                     ) {
                         Text(
-                            text = movie.releaseYear,
+                            text = movie.releaseYear.orNotAvailable(),
                             style = MaterialTheme.typography.titleMedium
                         )
                         DotSeparatorComp(

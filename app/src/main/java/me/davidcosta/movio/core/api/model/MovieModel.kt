@@ -1,12 +1,13 @@
 package me.davidcosta.movio.core.api.model
 
 import com.google.gson.annotations.SerializedName
+import java.time.LocalDate
 
 data class MovieModel(
     @SerializedName("id") val id: Int,
     @SerializedName("original_title") val originalTitle: String,
     @SerializedName("title") val title: String,
-    @SerializedName("release_date") val releaseDate: String,
+    @SerializedName("release_date") val releaseDate: LocalDate?,
     @SerializedName("overview") val overview: String,
     @SerializedName("poster_path") val posterPath: String?,
     @SerializedName("backdrop_path") val backdropPath: String,

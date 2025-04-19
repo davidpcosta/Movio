@@ -26,7 +26,7 @@
     <!-- endregion -->
 
 
-    <!-- region: Movie Detail -->
+    <!-- region: Movie Details -->
     <string name="movie_detail_screen_content_description_icon_rate">Ícone de busca</string>
 
     <string name="movie_detail_screen_tab_overview">Detalhes</string>
@@ -39,6 +39,10 @@
     <string name="movie_detail_screen_tab_overview_label_title">Título</string>
     <string name="movie_detail_screen_tab_overview_label_original_title">Título original</string>
     <!-- endregion -->
+
+    <!-- region: Person Details -->
+    <string name="person_details_screen_tab_overview">Detalhes</string>
+    <string name="person_details_screen_tab_titles">Atuação</string>
 
     <!-- Poster Component -->
     <string name="poster_image_content_description">Poster do filme %1s</string>

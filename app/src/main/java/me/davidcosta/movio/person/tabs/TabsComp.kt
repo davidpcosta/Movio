@@ -1,8 +1,9 @@
-package me.davidcosta.movio.moviedetails.components
+package me.davidcosta.movio.person.tabs
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -13,8 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.moviedetails.tabs.MovieDetailsScreenTabs
+import me.davidcosta.movio.moviedetails.tabs.title
 
 @Composable
 fun TabsComp(
@@ -51,12 +56,13 @@ fun TabsComp(
                 )
                 TabRowDefaults.SecondaryIndicator(
                     height = 2.dp,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier
                         .tabIndicatorOffset(tabPositions[selectedIndex])
                 )
             }
         ) {
-            MovieDetailScreenTabs.entries.forEachIndexed { index, tab ->
+            PersonScreenTabs.entries.forEachIndexed { index, tab ->
                 val style = if (tab.ordinal == selectedIndex) {
                     MaterialTheme.typography.headlineMedium
                 } else {
@@ -79,5 +85,16 @@ fun TabsComp(
 
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewTabsComp() {
+    AppTheme(changeSystemBarStyle = false) {
+        TabsComp(
+            selectedIndex = 0,
+            onClick = {}
+        )
     }
 }
