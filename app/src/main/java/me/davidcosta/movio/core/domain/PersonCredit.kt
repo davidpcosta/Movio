@@ -35,11 +35,11 @@ fun PersonCreditModel.releaseDate(): LocalDate? =
 
 fun PersonCreditModel.toPersonCredit() =
     PersonCredit(
-        id = this.id,
-        mediaType = this.mediaType.toMediaType(),
-        title = this.title(),
-        overview = this.overview,
-        posterPath = this.posterPath.fullPosterPath,
-        character = this.character,
-        releaseYear = this.releaseDate.formatYear()
+        id = id,
+        mediaType = mediaType.toMediaType(),
+        title = title(),
+        overview = overview,
+        posterPath = posterPath.fullPosterPath,
+        character = character,
+        releaseYear = releaseDate.formatYear()
     )

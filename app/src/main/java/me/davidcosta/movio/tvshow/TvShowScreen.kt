@@ -1,0 +1,101 @@
+package me.davidcosta.movio.tvshow
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.launch
+import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.movie.MovieScreen
+import me.davidcosta.movio.tvshow.tabs.Screen
+import me.davidcosta.movio.tvshow.tabs.TabsComp
+import me.davidcosta.movio.tvshow.tabs.TvShowTabs
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TvShowScreen(navController: NavHostController) {
+        val coroutineScope = rememberCoroutineScope()
+        val viewModel = viewModel<TvShowViewModel>()
+        var selectedIndex by remember { mutableIntStateOf(0) }
+        val pagerState = rememberPagerState { TvShowTabs.entries.size }
+        val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+
+        LaunchedEffect(pagerState.currentPage) {
+            selectedIndex = pagerState.currentPage
+        }
+
+        Scaffold(
+            topBar = {
+                TopBarComp(
+                    scrollBehavior = scrollBehavior,
+                    tvShow = viewModel.tvShowDetails.value
+                )
+            },
+            modifier = Modifier
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
+        ) { innerPadding ->
+            Box(
+                modifier = Modifier
+                    .padding(innerPadding)
+            ) {
+                viewModel.tvShowDetails.value?.let { tvShow ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ) {
+                        TabsComp(
+                            selectedIndex = selectedIndex,
+                            modifier = Modifier
+                        ) { index ->
+                            selectedIndex = index
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(index)
+                            }
+                        }
+                        HorizontalPager(
+                            state = pagerState,
+                        ) { index ->
+                            Box(
+                                modifier = Modifier
+                            ) {
+                                TvShowTabs
+                                    .entries[index]
+                                    .Screen(
+                                        navHostController = navController,
+                                        tvShow = tvShow
+                                    )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Preview(showBackground = true, showSystemUi = true)
+    @Composable
+    fun GreetingPreview() {
+        AppTheme(changeSystemBarStyle = false) {
+            MovieScreen(rememberNavController())
+        }
+    }

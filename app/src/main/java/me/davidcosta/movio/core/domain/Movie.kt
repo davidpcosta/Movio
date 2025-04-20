@@ -19,12 +19,12 @@ class Movie(
 
 fun MovieDetailsModel.toMovie() =
     Movie(
-        title = this.title,
-        originalTitle = this.originalTitle,
-        posterPath = this.posterPath.fullPosterPath,
-        releaseYear = this.releaseDate.formatYear(),
-        overview = this.overview,
-        runtime = this.runtime.formattedRuntime,
-        voteAverage = this.voteAverage.formattedVoteAverage,
-        genres = this.genres.map { it.name }
+        title = title,
+        originalTitle = originalTitle,
+        posterPath = posterPath.fullPosterPath,
+        releaseYear = releaseDate.formatYear(),
+        overview = overview,
+        runtime = runtime.formattedRuntime,
+        voteAverage = voteAverage.formattedVoteAverage,
+        genres = genres.map { it.name }
     )

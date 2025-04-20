@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails
+package me.davidcosta.movio.movie
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,20 +24,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.moviedetails.tabs.TabsComp
+import me.davidcosta.movio.movie.tabs.TabsComp
 import me.davidcosta.movio.core.theme.AppTheme
-import me.davidcosta.movio.moviedetails.tabs.MovieDetailsTabs
-import me.davidcosta.movio.moviedetails.tabs.Screen
+import me.davidcosta.movio.movie.tabs.MovieTabs
+import me.davidcosta.movio.movie.tabs.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieDetailsScreen(
+fun MovieScreen(
     navController: NavHostController
 ) {
     val coroutineScope = rememberCoroutineScope()
-    val viewModel = viewModel<MovieDetailsViewModel>()
+    val viewModel = viewModel<MovieViewModel>()
     var selectedIndex by remember { mutableIntStateOf(0) }
-    val pagerState = rememberPagerState { MovieDetailsTabs.entries.size }
+    val pagerState = rememberPagerState { MovieTabs.entries.size }
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     LaunchedEffect(pagerState.currentPage) {
@@ -79,7 +79,7 @@ fun MovieDetailsScreen(
                         Box(
                             modifier = Modifier
                         ) {
-                            MovieDetailsTabs
+                            MovieTabs
                                 .entries[index]
                                 .Screen(
                                     navHostController = navController,
@@ -97,6 +97,6 @@ fun MovieDetailsScreen(
 @Composable
 fun GreetingPreview() {
     AppTheme(changeSystemBarStyle = false) {
-        MovieDetailsScreen(rememberNavController())
+        MovieScreen(rememberNavController())
     }
 }

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs.overview
+package me.davidcosta.movio.tvshow.tabs.overview
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,26 +17,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.GenreComp
 import me.davidcosta.movio.core.components.person.PersonComp
-import me.davidcosta.movio.core.domain.Movie
-import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.domain.TvShow
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
-fun OverviewTab(
-    navHostController: NavHostController,
-    movie: Movie
+fun TvShowOverviewTab(
+    tvShow: TvShow
 ) {
-    val overviewViewModel = viewModel<OverviewViewModel>()
-
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top,
@@ -60,7 +52,7 @@ fun OverviewTab(
                 )
                 Text(
                     modifier = Modifier.padding(top = MaterialTheme.spacing.small),
-                    text = movie.title,
+                    text = tvShow.name,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary
                 )
@@ -74,7 +66,7 @@ fun OverviewTab(
                 )
                 Text(
                     modifier = Modifier.padding(top = MaterialTheme.spacing.small),
-                    text = movie.originalTitle,
+                    text = tvShow.originalName,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary
                 )
@@ -88,7 +80,7 @@ fun OverviewTab(
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
         )
         Text(
-            text = movie.overview.orDefault(stringResource(R.string.common_label_overview_unavailable)),
+            text = tvShow.overview.orDefault(stringResource(R.string.common_label_overview_unavailable)),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.secondary,
             modifier = Modifier
@@ -103,7 +95,7 @@ fun OverviewTab(
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
-            items(movie.genres) { genre ->
+            items(tvShow.genres) { genre ->
                 GenreComp(text = genre)
             }
         }
@@ -114,44 +106,26 @@ fun OverviewTab(
                 .padding(top = MaterialTheme.spacing.large)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
         )
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-            contentPadding = PaddingValues(
-                horizontal = MaterialTheme.spacing.horizontalMargin
-            ),
-            modifier = Modifier
-                .padding(top = MaterialTheme.spacing.medium)
-        ) {
-            items(overviewViewModel.movieCharacter.value) { person ->
-                PersonComp(
-                    characterData = person,
-                    onClick = {
-                        navHostController.navigate(PersonDetailsScreenRoute(
-                            personId = person.id
-                        ))
-                    }
-                )
-            }
-        }
-    }
-}
-
-@Preview
-@Composable
-private fun PreviewOverviewTab() {
-    AppTheme(changeSystemBarStyle = false) {
-        OverviewTab(
-            navHostController = rememberNavController(),
-            movie = Movie(
-                title = "Adolescencia",
-                originalTitle = "Adolescense",
-                posterPath = "poster.jpg",
-                releaseYear = "2025",
-                overview = "A fada fala alfafa.",
-                runtime = "2h25m",
-                voteAverage = "8,5",
-                genres = listOf("Drama", "Açãio")
-            )
-        )
+//        LazyRow(
+//            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+//            contentPadding = PaddingValues(
+//                horizontal = MaterialTheme.spacing.horizontalMargin
+//            ),
+//            modifier = Modifier
+//                .padding(top = MaterialTheme.spacing.medium)
+//        ) {
+//            items(overviewViewModel.movieCharacter.value) { person ->
+//                PersonComp(
+//                    characterData = person,
+//                    onClick = {
+//                        navHostController.navigate(
+//                            PersonDetailsScreenRoute(
+//                            personId = person.id
+//                        )
+//                        )
+//                    }
+//                )
+//            }
+//        }
     }
 }

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs.trailers
+package me.davidcosta.movio.movie.tabs.trailers
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues

@@ -15,14 +15,12 @@ data class Person(
 )
 
 fun PersonModel.toPerson() =
-    this.let {
-        Person(
-            id = it.id,
-            profilePath = it.profilePath.fullProfilePath,
-            name = it.name,
-            birthday = it.birthday.formatMediumDate(),
-            placeOfBirth = it.placeOfBirth,
-            biography = it.biography,
-            alsoKnownAs = it.alsoKnownAs
-        )
-    }
+    Person(
+        id = id,
+        profilePath = profilePath.fullProfilePath,
+        name = name,
+        birthday = birthday.formatMediumDate(),
+        placeOfBirth = placeOfBirth,
+        biography = biography,
+        alsoKnownAs = alsoKnownAs
+    )

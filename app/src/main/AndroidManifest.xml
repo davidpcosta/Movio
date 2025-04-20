@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Movio"
         tools:targetApi="31">
         <activity
-            android:name=".moviedetails.MovieDetailActivity"
+            android:name=".movie.MovieDetailActivity"
             android:exported="false"
             android:theme="@style/Theme.Movio" />
         <activity

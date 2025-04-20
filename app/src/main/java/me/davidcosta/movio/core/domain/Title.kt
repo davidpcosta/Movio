@@ -14,18 +14,11 @@ class Title(
     val releaseYear: String?
 )
 
-fun ResultModel<MovieModel>.toTitleList() =
-    this.results.map {
-        it.toTitle()
-    }
-
 fun MovieModel.toTitle() =
-    this.let {
-        Title(
-            title = it.title,
-            releaseYear = it.releaseDate.formatYear(),
-            posterPath = it.posterPath.fullPosterPath,
-            thumbPath = it.backdropPath.fullPosterPath,
-            voteAverage = it.voteAverage.formattedVoteAverage
-        )
-    }
+    Title(
+        title = title,
+        releaseYear = releaseDate.formatYear(),
+        posterPath = posterPath.fullPosterPath,
+        thumbPath = backdropPath.fullPosterPath,
+        voteAverage = voteAverage.formattedVoteAverage
+    )

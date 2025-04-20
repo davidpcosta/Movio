@@ -18,9 +18,9 @@ fun ResultModel<MovieModel>.toMoviePosterList() =
 
 fun MovieModel.toPoster() =
     Poster(
-        id = this.id,
-        title = this.title,
-        posterPath = this.posterPath.fullPosterPath
+        id = id,
+        title = title,
+        posterPath = posterPath.fullPosterPath
     )
 
 
@@ -31,14 +31,14 @@ fun ResultModel<TvShowModel>.toShowPosterList() =
 
 fun TvShowModel.toPoster() =
     Poster(
-        id = this.id,
-        title = this.name,
-        posterPath = this.posterPath?.fullPosterPath.orEmpty()
+        id = id,
+        title = name,
+        posterPath = posterPath?.fullPosterPath.orEmpty()
     )
 
 fun PersonCredit.toPoster() =
     Poster(
-        id = this.id,
-        title = this.title,
-        posterPath = this.posterPath
+        id = id,
+        title = title,
+        posterPath = posterPath
     )

@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import me.davidcosta.movio.BuildConfig
 import me.davidcosta.movio.core.api.parser.LocalDateParser
 import me.davidcosta.movio.core.api.parser.LocalDateTimeParser
+import me.davidcosta.movio.core.domain.Person
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -13,13 +14,31 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 object RetrofitInstance {
-    val api: ApiService by lazy {
+    val movieApi: MovieApi by lazy {
         Retrofit.Builder()
             .baseUrl(BuildConfig.TMDB_API)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()
-            .create(ApiService::class.java)
+            .create(MovieApi::class.java)
+    }
+
+    val tvShowApi: TvShowApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.TMDB_API)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
+            .build()
+            .create(TvShowApi::class.java)
+    }
+
+    val personApi: PersonApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.TMDB_API)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
+            .build()
+            .create(PersonApi::class.java)
     }
 }
 

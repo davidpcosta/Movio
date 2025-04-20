@@ -1,7 +1,6 @@
 package me.davidcosta.movio.person.tabs.titles
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,7 +27,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import me.davidcosta.movio.MovieDetailsScreenRoute
 import me.davidcosta.movio.R
-import me.davidcosta.movio.TvShowDetailsScreenRoute
+import me.davidcosta.movio.TvShowScreenRoute
 import me.davidcosta.movio.core.components.poster.PosterComp
 import me.davidcosta.movio.core.domain.MediaType
 import me.davidcosta.movio.core.domain.PersonCredit
@@ -56,7 +55,7 @@ fun PersonTitlesTab(navHostController: NavHostController) {
                             )
                         }
                         MediaType.TV_SHOW -> {
-                            TvShowDetailsScreenRoute(
+                            TvShowScreenRoute(
                                 tvShowId = credit.id
                             )
                         }

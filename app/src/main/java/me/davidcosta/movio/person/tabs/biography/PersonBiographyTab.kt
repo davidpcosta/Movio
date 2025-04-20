@@ -1,4 +1,4 @@
-package me.davidcosta.movio.person.tabs.overview
+package me.davidcosta.movio.person.tabs.biography
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails
+package me.davidcosta.movio.movie
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

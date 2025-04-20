@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.core.api.services.RetrofitInstance
+import me.davidcosta.movio.core.api.services.TvShowApi
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.domain.toShowPosterList
 
@@ -23,6 +24,9 @@ class TvShowsViewModel : ViewModel() {
     private var _topRatedTvShows = mutableStateOf<List<Poster>>(emptyList())
     val topRatedTvShows: State<List<Poster>> = _topRatedTvShows
 
+    private val tvShowApi: TvShowApi
+        get() = RetrofitInstance.tvShowApi
+
     init {
         fetchAiringTodayTvShows()
         fetchOnTheAirTvShows()
@@ -32,7 +36,7 @@ class TvShowsViewModel : ViewModel() {
 
     private fun fetchAiringTodayTvShows() {
         viewModelScope.launch {
-            _airingTodayTvShows.value = RetrofitInstance.api
+            _airingTodayTvShows.value = tvShowApi
                 .fetchAiringTodayShows()
                 .toShowPosterList()
         }
@@ -40,7 +44,7 @@ class TvShowsViewModel : ViewModel() {
 
     private fun fetchOnTheAirTvShows() {
         viewModelScope.launch {
-            _onTheAirTvShows.value = RetrofitInstance.api
+            _onTheAirTvShows.value = tvShowApi
                 .fetchOnTheAirShows()
                 .toShowPosterList()
         }
@@ -48,7 +52,7 @@ class TvShowsViewModel : ViewModel() {
 
     private fun fetchPopularTvShows() {
         viewModelScope.launch {
-            _popularTvShows.value = RetrofitInstance.api
+            _popularTvShows.value = tvShowApi
                 .fetchPopularShows()
                 .toShowPosterList()
         }
@@ -56,7 +60,7 @@ class TvShowsViewModel : ViewModel() {
 
     private fun fetchTopRatedTvShows() {
         viewModelScope.launch {
-            _topRatedTvShows.value = RetrofitInstance.api
+            _topRatedTvShows.value = tvShowApi
                 .fetchTopRatedShows()
                 .toShowPosterList()
         }

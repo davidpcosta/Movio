@@ -6,7 +6,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Person
-import me.davidcosta.movio.person.tabs.overview.PersonBiographyTab
+import me.davidcosta.movio.person.tabs.biography.PersonBiographyTab
 import me.davidcosta.movio.person.tabs.titles.PersonTitlesTab
 
 enum class PersonScreenTabs {

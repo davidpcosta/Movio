@@ -43,6 +43,16 @@
     <string name="movie_detail_screen_tab_overview_label_original_title">Título original</string>
     <!-- endregion -->
 
+    <!-- region: TV Show Details -->
+    <string name="tv_show_tab_episodes">Episódios</string>
+    <string name="tv_show_tab_overview">Detalhes</string>
+
+    <plurals name="tv_show_label_seasons">
+        <item quantity="one">%1d temporada</item>
+        <item quantity="other">%1d temporadas</item>
+    </plurals>
+    <!-- endregion -->
+
     <!-- region: Person Details -->
     <string name="person_details_screen_tab_biography">Biografia</string>
     <string name="person_details_screen_tab_biography_label_bio">Biografia</string>

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs.similar
+package me.davidcosta.movio.movie.tabs.similar
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

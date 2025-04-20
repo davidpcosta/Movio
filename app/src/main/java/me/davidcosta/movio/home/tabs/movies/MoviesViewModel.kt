@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import me.davidcosta.movio.core.api.services.MovieApi
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.domain.toMoviePosterList
@@ -23,6 +24,9 @@ class MoviesViewModel : ViewModel() {
     private var _upcomingTitles = mutableStateOf<List<Poster>>(emptyList())
     val upcomingTitles: State<List<Poster>> = _upcomingTitles
 
+    private val movieApi: MovieApi
+        get() = RetrofitInstance.movieApi
+
     init {
         fetchNowPlayingTitles()
         fetchPopularTitles()
@@ -32,7 +36,7 @@ class MoviesViewModel : ViewModel() {
 
     private fun fetchNowPlayingTitles() {
         viewModelScope.launch {
-            _nowPlayingTitles.value = RetrofitInstance.api
+            _nowPlayingTitles.value = movieApi
                 .fetchNowPlayingMovies()
                 .toMoviePosterList()
         }
@@ -40,7 +44,7 @@ class MoviesViewModel : ViewModel() {
 
     private fun fetchPopularTitles() {
         viewModelScope.launch {
-            _popularTitles.value = RetrofitInstance.api
+            _popularTitles.value = movieApi
                 .fetchNowPlayingMovies()
                 .toMoviePosterList()
         }
@@ -48,7 +52,7 @@ class MoviesViewModel : ViewModel() {
 
     private fun fetchTopRatedTitles() {
         viewModelScope.launch {
-            _topRatedTitles.value = RetrofitInstance.api
+            _topRatedTitles.value = movieApi
                 .fetchTopRatedMovies()
                 .toMoviePosterList()
         }
@@ -56,7 +60,7 @@ class MoviesViewModel : ViewModel() {
 
     private fun fetchUpComingTitles() {
         viewModelScope.launch {
-            _upcomingTitles.value = RetrofitInstance.api
+            _upcomingTitles.value = movieApi
                 .fetchUpcomingMovies()
                 .toMoviePosterList()
         }

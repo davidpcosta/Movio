@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.PersonDetailsScreenRoute
+import me.davidcosta.movio.core.api.services.PersonApi
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.PersonCredit
 import me.davidcosta.movio.core.domain.toPersonCreditList
@@ -21,23 +22,25 @@ class PersonTitlesViewModel(
     private var _personCredits = mutableStateOf<List<PersonCredit>>(emptyList())
     val personCredits: State<List<PersonCredit>> = _personCredits
 
+    private val personApi: PersonApi
+        get() = RetrofitInstance.personApi
+
     init {
         fetchPersonCredits(args.personId)
     }
 
     private fun fetchPersonCredits(personId: Int) {
         viewModelScope.launch {
-            val fullList = RetrofitInstance.api
+            _personCredits.value = personApi
                 .fetchPersonCredits(personId = personId)
                 .toPersonCreditList()
                 .sortedByDescending { it.releaseYear }
-
-            val finalList = fullList.filterNot { it.releaseYear.isNullOrBlank() }
-                .plus(
-                    fullList.filter { it.releaseYear.isNullOrBlank() }
-                )
-
-            _personCredits.value = finalList
+                .let { fullList ->
+                    fullList.filterNot { it.releaseYear.isNullOrBlank() }
+                        .plus(
+                            fullList.filter { it.releaseYear.isNullOrBlank() }
+                        )
+                }
         }
     }
 }

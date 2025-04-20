@@ -10,6 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.R
+import me.davidcosta.movio.TvShowScreenRoute
 import me.davidcosta.movio.core.components.poster.PosterRailComp
 
 @Composable
@@ -19,6 +20,14 @@ fun TvShowsTab(
 
     val viewModel = viewModel<TvShowsViewModel>()
 
+    val onPosterClick = { id: Int ->
+        navController.navigate(
+            TvShowScreenRoute(
+                tvShowId = id
+            )
+        )
+    }
+
     Column (
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
@@ -26,19 +35,23 @@ fun TvShowsTab(
     ) {
         PosterRailComp(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_airing_today),
-            posterRailData = viewModel.airingTodayTvShows.value
+            posterRailData = viewModel.airingTodayTvShows.value,
+            onPosterClick = onPosterClick
         )
         PosterRailComp(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_on_the_air),
-            posterRailData = viewModel.onTheAirTvShows.value
+            posterRailData = viewModel.onTheAirTvShows.value,
+            onPosterClick = onPosterClick
         )
         PosterRailComp(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_popular),
-            posterRailData = viewModel.popularTvShows.value
+            posterRailData = viewModel.popularTvShows.value,
+            onPosterClick = onPosterClick
         )
         PosterRailComp(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_top_rated),
-            posterRailData = viewModel.topRatedTvShows.value
+            posterRailData = viewModel.topRatedTvShows.value,
+            onPosterClick = onPosterClick
         )
     }
 }

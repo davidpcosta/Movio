@@ -1,4 +1,4 @@
-package me.davidcosta.movio.moviedetails.tabs
+package me.davidcosta.movio.movie.tabs
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -59,7 +59,7 @@ fun TabsComp(
                 )
             }
         ) {
-            MovieDetailsTabs.entries.forEachIndexed { index, tab ->
+            MovieTabs.entries.forEachIndexed { index, tab ->
                 val style = if (tab.ordinal == selectedIndex) {
                     MaterialTheme.typography.headlineMedium
                 } else {
