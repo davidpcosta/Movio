@@ -50,16 +50,19 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
 
     Scaffold { innerPadding ->
 
-        viewModel.person.value?.also { person ->
+        viewModel.person.value?.also { personCredit ->
             Column(
                 modifier = Modifier.padding(innerPadding)
                     .fillMaxSize()
             ) {
                 Row(
-                    modifier = Modifier.padding(
-                        horizontal = MaterialTheme.spacing.horizontalMargin,
-                        vertical = MaterialTheme.spacing.large
-                    ),
+                    modifier = Modifier
+                        .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                        .padding(
+                            top = MaterialTheme.spacing.large,
+                            bottom = MaterialTheme.spacing.small
+                        ),
+
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Surface(
@@ -67,7 +70,7 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                         modifier = Modifier.size(120.dp)
                     ) {
                         AsyncImage(
-                            model = person.profilePath,
+                            model = personCredit.profilePath,
                             contentDescription = "Movie poster",
                             contentScale = ContentScale.Crop,
                             modifier = Modifier.fillMaxSize()
@@ -80,20 +83,22 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                     ) {
                         Text(
                             style = MaterialTheme.typography.displaySmall,
-                            text = person.name
+                            text = personCredit.name
                         )
-                        person.birthday?.let {
+                        personCredit.birthday?.let {
                             Text(
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.secondary,
                                 text = it
                             )
                         }
-                        Text(
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.secondary,
-                            text = person.placeOfBirth
-                        )
+                        personCredit.placeOfBirth?.let {
+                            Text(
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.secondary,
+                                text = it
+                            )
+                        }
                     }
                 }
 
@@ -115,7 +120,8 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                         PersonScreenTabs
                             .entries[index]
                             .Screen(
-                                navHostController = navHostController
+                                navHostController = navHostController,
+                                person = personCredit
                             )
                     }
                 }

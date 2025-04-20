@@ -4,14 +4,16 @@ import me.davidcosta.movio.core.api.model.core.MediaTypeModel
 import me.davidcosta.movio.core.api.model.person.PersonCreditModel
 import me.davidcosta.movio.core.api.model.person.PersonCreditsResultModel
 import me.davidcosta.movio.core.utils.formatYear
-import me.davidcosta.movio.core.utils.orNotAvailable
+import me.davidcosta.movio.core.utils.fullPosterPath
 import java.time.LocalDate
 
 data class PersonCredit(
     val id: Int,
     val mediaType: MediaType,
     val title: String,
-    val character: String,
+    val overview: String?,
+    val posterPath: String,
+    val character: String?,
     val releaseYear: String?
 )
 
@@ -23,7 +25,7 @@ fun PersonCreditModel.title(): String =
     when(this.mediaType) {
         MediaTypeModel.MOVIE -> this.title
         MediaTypeModel.TV -> this.name
-    }.orNotAvailable()
+    }.orEmpty()
 
 fun PersonCreditModel.releaseDate(): LocalDate? =
     when(this.mediaType) {
@@ -36,6 +38,8 @@ fun PersonCreditModel.toPersonCredit() =
         id = this.id,
         mediaType = this.mediaType.toMediaType(),
         title = this.title(),
-        character = this.character.orNotAvailable(),
+        overview = this.overview,
+        posterPath = this.posterPath.fullPosterPath,
+        character = this.character,
         releaseYear = this.releaseDate.formatYear()
     )

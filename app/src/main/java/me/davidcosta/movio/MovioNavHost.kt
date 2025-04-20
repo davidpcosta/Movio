@@ -13,34 +13,34 @@ import me.davidcosta.movio.person.PersonDetailsScreen
 fun MovioNavHost(navHosController: NavHostController) {
     NavHost(
         navController = navHosController,
-        startDestination = HomeScreen
+        startDestination = HomeScreenRoute
     ) {
-        composable<HomeScreen> {
+        composable<HomeScreenRoute> {
             HomeScreen(navHosController)
         }
-        composable<MovieDetailsScreen> {
+        composable<MovieDetailsScreenRoute> {
             MovieDetailsScreen(navHosController)
         }
-        composable<PersonDetailsScreen> {
+        composable<PersonDetailsScreenRoute> {
             PersonDetailsScreen(navHosController)
         }
     }
 }
 
 @Serializable
-object HomeScreen
+object HomeScreenRoute
 
 @Serializable
-data class MovieDetailsScreen(
+data class MovieDetailsScreenRoute(
     val movieId: Int
 )
 
 @Serializable
-data class TvShowDetailsScreen(
+data class TvShowDetailsScreenRoute(
     val tvShowId: Int
 )
 
 @Serializable
-data class PersonDetailsScreen(
+data class PersonDetailsScreenRoute(
     val personId: Int
 )

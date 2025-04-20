@@ -26,7 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.moviedetails.tabs.TabsComp
 import me.davidcosta.movio.core.theme.AppTheme
-import me.davidcosta.movio.moviedetails.tabs.MovieDetailsScreenTabs
+import me.davidcosta.movio.moviedetails.tabs.MovieDetailsTabs
 import me.davidcosta.movio.moviedetails.tabs.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +37,7 @@ fun MovieDetailsScreen(
     val coroutineScope = rememberCoroutineScope()
     val viewModel = viewModel<MovieDetailsViewModel>()
     var selectedIndex by remember { mutableIntStateOf(0) }
-    val pagerState = rememberPagerState { MovieDetailsScreenTabs.entries.size }
+    val pagerState = rememberPagerState { MovieDetailsTabs.entries.size }
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     LaunchedEffect(pagerState.currentPage) {
@@ -79,7 +79,7 @@ fun MovieDetailsScreen(
                         Box(
                             modifier = Modifier
                         ) {
-                            MovieDetailsScreenTabs
+                            MovieDetailsTabs
                                 .entries[index]
                                 .Screen(
                                     navHostController = navController,

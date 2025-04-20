@@ -32,7 +32,6 @@ import me.davidcosta.movio.core.components.core.ScoreComp
 import me.davidcosta.movio.core.domain.Title
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
-import me.davidcosta.movio.core.utils.orNotAvailable
 
 @Composable
 fun HighlightComp(
@@ -83,7 +82,7 @@ fun HighlightComp(
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
                     )
                     Text(
-                        text = highlightData.releaseYear.orNotAvailable(),
+                        text = highlightData.releaseYear.orEmpty(),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.titleSmall,
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)

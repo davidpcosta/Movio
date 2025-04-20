@@ -50,7 +50,7 @@ fun TabsComp(
             },
             edgePadding = MaterialTheme.spacing.horizontalMargin
         ) {
-            HomeScreenTabs.entries.forEachIndexed { index, tab ->
+            HomeTabs.entries.forEachIndexed { index, tab ->
                 val style = if (tab.ordinal == selectedIndex) {
                     MaterialTheme.typography.headlineMedium
                 } else {

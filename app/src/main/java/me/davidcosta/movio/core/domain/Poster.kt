@@ -17,13 +17,12 @@ fun ResultModel<MovieModel>.toMoviePosterList() =
     }
 
 fun MovieModel.toPoster() =
-    this.let { movie ->
-        Poster(
-            id = movie.id,
-            title = movie.title,
-            posterPath = movie.posterPath.fullPosterPath
-        )
-    }
+    Poster(
+        id = this.id,
+        title = this.title,
+        posterPath = this.posterPath.fullPosterPath
+    )
+
 
 fun ResultModel<TvShowModel>.toShowPosterList() =
     this.results.map {
@@ -31,10 +30,15 @@ fun ResultModel<TvShowModel>.toShowPosterList() =
     }
 
 fun TvShowModel.toPoster() =
-    this.let { show ->
-        Poster(
-            id = show.id,
-            title = show.name,
-            posterPath = show.posterPath?.fullPosterPath.orEmpty()
-        )
-    }
+    Poster(
+        id = this.id,
+        title = this.name,
+        posterPath = this.posterPath?.fullPosterPath.orEmpty()
+    )
+
+fun PersonCredit.toPoster() =
+    Poster(
+        id = this.id,
+        title = this.title,
+        posterPath = this.posterPath
+    )

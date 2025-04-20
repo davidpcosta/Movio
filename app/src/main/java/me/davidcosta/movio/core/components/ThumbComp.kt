@@ -90,7 +90,7 @@ fun ThumbComp(
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
                     )
                     Text(
-                        text = thumbData.publishedAt,
+                        text = thumbData.publishedAt.orEmpty(),
                         color = MaterialTheme.colorScheme.secondary,
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)

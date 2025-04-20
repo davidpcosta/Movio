@@ -16,7 +16,7 @@ data class PersonCreditModel(
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("genre_ids") val genreIds: List<Int>,
     @SerializedName("original_language") val originalLanguage: String,
-    @SerializedName("overview") val overview: String,
+    @SerializedName("overview") val overview: String?,
     @SerializedName("popularity") val popularity: Float,
     @SerializedName("poster_path") val posterPath: String,
     @SerializedName("release_date") val releaseDate: LocalDate?,

@@ -59,7 +59,7 @@ fun TabsComp(
                 )
             }
         ) {
-            MovieDetailsScreenTabs.entries.forEachIndexed { index, tab ->
+            MovieDetailsTabs.entries.forEachIndexed { index, tab ->
                 val style = if (tab.ordinal == selectedIndex) {
                     MaterialTheme.typography.headlineMedium
                 } else {

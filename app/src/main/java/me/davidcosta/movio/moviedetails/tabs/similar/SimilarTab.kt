@@ -14,13 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import me.davidcosta.movio.MovieDetailsScreen
+import me.davidcosta.movio.MovieDetailsScreenRoute
 import me.davidcosta.movio.core.components.poster.PosterComp
 import me.davidcosta.movio.core.components.poster.PosterSize
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun SimilarTabComp(
+fun SimilarTab(
     navHostController: NavHostController
 ) {
 
@@ -44,7 +44,7 @@ fun SimilarTabComp(
             ) {
                 PosterComp(posterData = poster, posterSize = PosterSize.Medium) { id ->
                     navHostController.navigate(
-                        MovieDetailsScreen(movieId = id)
+                        MovieDetailsScreenRoute(movieId = id)
                     )
                 }
             }

@@ -15,7 +15,7 @@ import me.davidcosta.movio.core.components.ThumbComp
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun TrailersTabComp(
+fun TrailersTab(
     navHostController: NavHostController
 ) {
     val trailersViewModel = viewModel<TrailersViewModel>()

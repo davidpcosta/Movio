@@ -21,16 +21,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import me.davidcosta.movio.PersonDetailsScreen
+import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.GenreComp
 import me.davidcosta.movio.core.components.person.PersonComp
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
-fun OverviewTabComp(
+fun OverviewTab(
     navHostController: NavHostController,
     movie: Movie
 ) {
@@ -87,10 +88,9 @@ fun OverviewTabComp(
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
         )
         Text(
-            text = movie.overview
-                .takeUnless { it.isNullOrBlank() }
-                ?: stringResource(R.string.movie_detail_screen_tab_related_label_overview_unavailable),
+            text = movie.overview.orDefault(stringResource(R.string.common_label_overview_unavailable)),
             style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.secondary,
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.small)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
@@ -126,7 +126,7 @@ fun OverviewTabComp(
                 PersonComp(
                     characterData = person,
                     onClick = {
-                        navHostController.navigate(PersonDetailsScreen(
+                        navHostController.navigate(PersonDetailsScreenRoute(
                             personId = person.id
                         ))
                     }
@@ -140,7 +140,7 @@ fun OverviewTabComp(
 @Composable
 private fun PreviewOverviewTab() {
     AppTheme(changeSystemBarStyle = false) {
-        OverviewTabComp(
+        OverviewTab(
             navHostController = rememberNavController(),
             movie = Movie(
                 title = "Adolescencia",

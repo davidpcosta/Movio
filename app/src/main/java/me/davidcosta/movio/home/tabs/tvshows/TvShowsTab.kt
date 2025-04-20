@@ -13,7 +13,7 @@ import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.poster.PosterRailComp
 
 @Composable
-fun TvShowsTabComp(
+fun TvShowsTab(
     navController: NavHostController
 ) {
 

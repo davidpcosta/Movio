@@ -8,9 +8,12 @@ const val VIDEO_KEY = "{VIDEO_KEY}"
 val zone: ZoneId = ZoneId.of("America/Sao_Paulo")
 val locale: Locale = Locale.forLanguageTag("pt-BR")
 
+fun String?.orDefault(defaultStr: String): String =
+    this.takeUnless { it.isNullOrBlank() } ?: defaultStr
 
-fun String?.orNotAvailable(): String =
-    this ?: "n/a"
+fun String?.validate(): String? =
+    this.takeUnless { it.isNullOrBlank() }
+
 
 val String?.fullPosterPath
     get() = this?.let { path ->

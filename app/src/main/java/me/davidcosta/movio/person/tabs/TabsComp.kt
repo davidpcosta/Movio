@@ -3,7 +3,6 @@ package me.davidcosta.movio.person.tabs
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -18,8 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
-import me.davidcosta.movio.moviedetails.tabs.MovieDetailsScreenTabs
-import me.davidcosta.movio.moviedetails.tabs.title
 
 @Composable
 fun TabsComp(

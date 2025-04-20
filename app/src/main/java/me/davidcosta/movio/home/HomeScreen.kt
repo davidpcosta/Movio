@@ -25,7 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.home.tabs.TabsComp
 import me.davidcosta.movio.core.theme.AppTheme
-import me.davidcosta.movio.home.tabs.HomeScreenTabs
+import me.davidcosta.movio.home.tabs.HomeTabs
 import me.davidcosta.movio.home.tabs.Screen
 
 
@@ -34,7 +34,7 @@ import me.davidcosta.movio.home.tabs.Screen
 fun HomeScreen(navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
     var selectedIndex by remember { mutableIntStateOf(0) }
-    val pagerState = rememberPagerState { HomeScreenTabs.entries.size }
+    val pagerState = rememberPagerState { HomeTabs.entries.size }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     LaunchedEffect(pagerState.currentPage) {
@@ -77,7 +77,7 @@ private fun TabContent(
         Box(
             modifier = modifier
         ) {
-            HomeScreenTabs
+            HomeTabs
                 .entries[index]
                 .Screen(navController)
         }

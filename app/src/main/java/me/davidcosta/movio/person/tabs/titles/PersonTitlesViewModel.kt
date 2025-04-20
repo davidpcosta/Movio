@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.PersonDetailsScreen
+import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.PersonCredit
 import me.davidcosta.movio.core.domain.toPersonCreditList
@@ -16,7 +16,7 @@ class PersonTitlesViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val args = savedStateHandle.toRoute<PersonDetailsScreen>()
+    private val args = savedStateHandle.toRoute<PersonDetailsScreenRoute>()
 
     private var _personCredits = mutableStateOf<List<PersonCredit>>(emptyList())
     val personCredits: State<List<PersonCredit>> = _personCredits

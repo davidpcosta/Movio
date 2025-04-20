@@ -5,6 +5,12 @@
     <string name="app_name">Movio</string>
     <string name="app_slogan">Unlock Your Movie Magic</string>
 
+    <!-- region: Common -->
+    <string name="common_label_not_available_short">n/a</string>
+    <string name="common_label_overview_unavailable">Sinopse indisponível.</string>
+    <string name="common_label_biography_unavailable">Biografia indisponível.</string>
+    <!-- endregion -->
+
     <!-- region : Home -->
     <string name="home_screen_tab_movies">Filmes</string>
     <string name="home_screen_tab_tv_shows">Series</string>
@@ -28,21 +34,23 @@
 
     <!-- region: Movie Details -->
     <string name="movie_detail_screen_content_description_icon_rate">Ícone de busca</string>
-
     <string name="movie_detail_screen_tab_overview">Detalhes</string>
     <string name="movie_detail_screen_tab_trailers">Trailers</string>
     <string name="movie_detail_screen_tab_related">Similares</string>
     <string name="movie_detail_screen_tab_related_label_overview">Sinopse</string>
-    <string name="movie_detail_screen_tab_related_label_overview_unavailable">Sinopse indisponível.</string>
     <string name="movie_detail_screen_tab_related_label_cast_and_crew">Elenco principal</string>
-
     <string name="movie_detail_screen_tab_overview_label_title">Título</string>
     <string name="movie_detail_screen_tab_overview_label_original_title">Título original</string>
     <!-- endregion -->
 
     <!-- region: Person Details -->
-    <string name="person_details_screen_tab_overview">Detalhes</string>
+    <string name="person_details_screen_tab_biography">Biografia</string>
+    <string name="person_details_screen_tab_biography_label_bio">Biografia</string>
+    <string name="person_details_screen_tab_biography_also_known_as_female">Também conhecida como</string>
+    <string name="person_details_screen_tab_biography_also_known_as_male">Também conhecido como</string>
     <string name="person_details_screen_tab_titles">Atuação</string>
+    <string name="person_details_screen_tab_titles_as_character">Como: %1s</string>
+    <!-- endregion -->
 
     <!-- Poster Component -->
     <string name="poster_image_content_description">Poster do filme %1s</string>
