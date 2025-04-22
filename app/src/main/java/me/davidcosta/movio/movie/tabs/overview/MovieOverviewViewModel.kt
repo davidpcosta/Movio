@@ -7,17 +7,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.MovieDetailsScreenRoute
+import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.core.api.services.MovieApi
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Character
-import me.davidcosta.movio.core.domain.toCast
+import me.davidcosta.movio.core.domain.toCharacterList
 
-class OverviewViewModel(
+class MovieOverviewViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val args = savedStateHandle.toRoute<MovieDetailsScreenRoute>()
+    private val args = savedStateHandle.toRoute<MovieScreenRoute>()
 
     private var _movieCharacter = mutableStateOf<List<Character>>(emptyList())
     val movieCharacter: State<List<Character>> = _movieCharacter
@@ -33,7 +33,7 @@ class OverviewViewModel(
         viewModelScope.launch {
             _movieCharacter.value = movieApi
                 .fetchMovieCredits(movieId = movieId)
-                .toCast()
+                .toCharacterList()
         }
     }
 }

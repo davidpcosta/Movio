@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,6 +31,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
+import me.davidcosta.movio.R
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.person.tabs.PersonScreenTabs
@@ -71,7 +73,10 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                     ) {
                         AsyncImage(
                             model = personCredit.profilePath,
-                            contentDescription = "Movie poster",
+                            contentDescription = stringResource(
+                                R.string.person_details_screen_content_description_profile,
+                                personCredit.name
+                            ),
                             contentScale = ContentScale.Crop,
                             modifier = Modifier.fillMaxSize()
                         )

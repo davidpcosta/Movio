@@ -45,7 +45,7 @@ fun HighlightComp(
         modifier = modifier
     ) {
         Surface(
-            shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+            shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .width(width)
                 .height(height)

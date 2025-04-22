@@ -6,9 +6,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Movie
-import me.davidcosta.movio.movie.tabs.overview.OverviewTab
-import me.davidcosta.movio.movie.tabs.similar.SimilarTab
-import me.davidcosta.movio.movie.tabs.trailers.TrailersTab
+import me.davidcosta.movio.movie.tabs.overview.MovieOverviewTab
+import me.davidcosta.movio.movie.tabs.similar.MovieSimilarTab
+import me.davidcosta.movio.movie.tabs.trailers.MovieTrailersTab
 
 enum class MovieTabs {
     OVERVIEW,
@@ -31,7 +31,7 @@ fun MovieTabs.Screen(
     movie: Movie
 ) =
     when (this) {
-        MovieTabs.OVERVIEW -> OverviewTab(movie = movie, navHostController = navHostController)
-        MovieTabs.TRAILERS -> TrailersTab(navHostController = navHostController)
-        MovieTabs.SIMILAR -> SimilarTab(navHostController = navHostController)
+        MovieTabs.OVERVIEW -> MovieOverviewTab(movie = movie, navHostController = navHostController)
+        MovieTabs.TRAILERS -> MovieTrailersTab(navHostController = navHostController)
+        MovieTabs.SIMILAR -> MovieSimilarTab(navHostController = navHostController)
     }

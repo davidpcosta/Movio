@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,7 +14,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Character
@@ -34,7 +31,7 @@ fun PersonComp(
             .width(dimensionResource(R.dimen.people_profile_size))
     ) {
         Surface (
-            shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+            shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .size(dimensionResource(R.dimen.people_profile_size))
                 .clickable {
@@ -46,7 +43,7 @@ fun PersonComp(
                 model = characterData.profilePath,
                 contentScale = ContentScale.Crop,
                 contentDescription = stringResource(
-                    R.string.people_image_content_description,
+                    R.string.people_content_description_image,
                     characterData.character,
                     characterData.name
                 )

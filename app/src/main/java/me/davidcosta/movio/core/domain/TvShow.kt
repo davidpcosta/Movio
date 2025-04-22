@@ -5,6 +5,7 @@ import me.davidcosta.movio.core.utils.formattedVoteAverage
 import me.davidcosta.movio.core.utils.fullPosterPath
 
 data class TvShow(
+    val id: Int,
     val name: String,
     val originalName: String,
     val overview: String?,
@@ -12,11 +13,13 @@ data class TvShow(
     val seasonsCount: Int,
     val firstAirYear: String?,
     val voteAverage: String,
-    val genres: List<String>
+    val genres: List<String>,
+    val seasons: List<Season>
 )
 
 fun TvShowDetailsModel.toTvShow() =
     TvShow(
+        id = id,
         name = name,
         originalName = originalName,
         overview = overview,
@@ -24,5 +27,6 @@ fun TvShowDetailsModel.toTvShow() =
         posterPath = posterPath.fullPosterPath,
         firstAirYear = firstAirDate.year.toString(),
         voteAverage = voteAverage.formattedVoteAverage,
-        genres = genres.map { it.name }
+        genres = genres.map { it.name },
+        seasons = seasons.map { it.toSeason() }
     )

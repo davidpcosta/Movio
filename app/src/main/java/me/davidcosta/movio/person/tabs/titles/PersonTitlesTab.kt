@@ -1,6 +1,7 @@
 package me.davidcosta.movio.person.tabs.titles
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import me.davidcosta.movio.MovieDetailsScreenRoute
+import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.TvShowScreenRoute
 import me.davidcosta.movio.core.components.poster.PosterComp
@@ -43,14 +44,15 @@ fun PersonTitlesTab(navHostController: NavHostController) {
     val viewModel = viewModel<PersonTitlesViewModel>()
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.tiny)
     ) {
         items(viewModel.personCredits.value) { credit ->
             MovieItem(personCredit = credit) {
                 navHostController.navigate(
                     when (credit.mediaType) {
                         MediaType.MOVIE -> {
-                            MovieDetailsScreenRoute(
+                            MovieScreenRoute(
                                 movieId = credit.id
                             )
                         }
@@ -74,9 +76,7 @@ private fun MovieItem(
     var isVisible by remember { mutableStateOf(false) }
 
     Surface(
-        modifier = Modifier
-            .padding(bottom = MaterialTheme.spacing.tiny)
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         onClick = {
             isVisible = isVisible.not()
         }
@@ -86,10 +86,7 @@ private fun MovieItem(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                    .padding(
-                        top = MaterialTheme.spacing.medium,
-                        bottom = MaterialTheme.spacing.small
-                    )
+                    .padding(vertical = MaterialTheme.spacing.small)
             ) {
                 Text(
                     style = MaterialTheme.typography.bodyMedium,

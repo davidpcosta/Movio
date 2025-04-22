@@ -11,14 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import me.davidcosta.movio.core.components.ThumbComp
+import me.davidcosta.movio.core.components.VideoComp
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun TrailersTab(
+fun MovieTrailersTab(
     navHostController: NavHostController
 ) {
-    val trailersViewModel = viewModel<TrailersViewModel>()
+    val movieTrailersViewModel = viewModel<MovieTrailersViewModel>()
     val uriHandler = LocalUriHandler.current
 
     val goToVideo: (String) -> Unit = { videoPath ->
@@ -33,8 +33,8 @@ fun TrailersTab(
         verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(trailersViewModel.movieVideos.value) { video ->
-            ThumbComp(
+        items(movieTrailersViewModel.movieVideos.value) { video ->
+            VideoComp(
                 thumbData = video,
                 onClick = { videoPath ->
                     goToVideo(videoPath)

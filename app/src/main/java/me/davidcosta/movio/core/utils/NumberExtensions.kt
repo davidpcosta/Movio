@@ -6,4 +6,7 @@ val Float.formattedVoteAverage: String
     get() = DecimalFormat("0.0").format(this)
 
 val Int.formattedRuntime: String
-    get() = "${this.div(60)}h ${this.rem(60)}m"
+    get() = when(this) {
+        in 0 .. 59 -> "${this}m"
+        else  -> "${this.div(60)}h ${this.rem(60)}m"
+    }

@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -25,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -35,7 +34,7 @@ import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun ThumbComp(
+fun VideoComp(
     modifier: Modifier = Modifier,
     thumbData: Video,
     onClick: (String) -> Unit = {}
@@ -47,14 +46,14 @@ fun ThumbComp(
         modifier = modifier
     ) {
         Surface(
-            shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+            shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .width(width)
                 .height(height)
         ) {
             AsyncImage(
                 model = thumbData.thumbPath,
-                contentDescription = thumbData.name,
+                contentDescription = stringResource(R.string.video_component_content_description_trailer_image),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -70,7 +69,7 @@ fun ThumbComp(
             ) {
                 Icon(
                     imageVector = Icons.Play,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.video_component_content_description_play_icon),
                     tint = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier
                         .padding(bottom = 40.dp)
@@ -115,7 +114,7 @@ private fun gradient(): Brush {
 @Composable
 fun PreviewThumbComp() {
     AppTheme(changeSystemBarStyle = false) {
-        ThumbComp(
+        VideoComp(
             thumbData = Video(
                 id = "001",
                 thumbPath = "path",

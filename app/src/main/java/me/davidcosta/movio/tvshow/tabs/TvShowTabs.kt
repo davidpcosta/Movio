@@ -29,7 +29,7 @@ fun TvShowTabs.Screen(
     tvShow: TvShow
 ) {
     when (this) {
-        TvShowTabs.EPISODES -> TvShowEpisodesTab(navHostController)
-        TvShowTabs.OVERVIEW -> TvShowOverviewTab(tvShow)
+        TvShowTabs.EPISODES -> TvShowEpisodesTab(tvShow)
+        TvShowTabs.OVERVIEW -> TvShowOverviewTab(navHostController, tvShow)
     }
 }

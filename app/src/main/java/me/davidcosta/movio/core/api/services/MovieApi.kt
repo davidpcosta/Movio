@@ -1,6 +1,6 @@
 package me.davidcosta.movio.core.api.services
 
-import me.davidcosta.movio.core.api.model.MovieCreditsModel
+import me.davidcosta.movio.core.api.model.CreditsModel
 import me.davidcosta.movio.core.api.model.MovieDetailsModel
 import me.davidcosta.movio.core.api.model.MovieModel
 import me.davidcosta.movio.core.api.model.VideoResultModel
@@ -29,7 +29,7 @@ interface MovieApi {
     @GET("movie/{movie_id}/credits?language=pt-BR")
     suspend fun fetchMovieCredits(
         @Path("movie_id") movieId: Int
-    ) : MovieCreditsModel
+    ) : CreditsModel
 
     @GET("movie/{movie_id}/similar?language=pt-BR")
     suspend fun fetchMovieSimilar(

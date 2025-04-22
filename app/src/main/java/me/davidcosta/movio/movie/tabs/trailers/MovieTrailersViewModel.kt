@@ -7,17 +7,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.MovieDetailsScreenRoute
+import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.core.api.services.MovieApi
 import me.davidcosta.movio.core.api.services.RetrofitInstance
 import me.davidcosta.movio.core.domain.Video
 import me.davidcosta.movio.core.domain.toVideoList
 
-class TrailersViewModel(
+class MovieTrailersViewModel(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val args = savedStateHandle.toRoute<MovieDetailsScreenRoute>()
+    private val args = savedStateHandle.toRoute<MovieScreenRoute>()
 
     private var _movieVideos = mutableStateOf<List<Video>>(emptyList())
     val movieVideos: State<List<Video>> = _movieVideos

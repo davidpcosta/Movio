@@ -31,7 +31,6 @@
     <string name="home_screen_tab_tv_shows_top_rated">Mais bem avaliados</string>
     <!-- endregion -->
 
-
     <!-- region: Movie Details -->
     <string name="movie_detail_screen_content_description_icon_rate">Ícone de busca</string>
     <string name="movie_detail_screen_tab_overview">Detalhes</string>
@@ -56,26 +55,49 @@
     <!-- region: Person Details -->
     <string name="person_details_screen_tab_biography">Biografia</string>
     <string name="person_details_screen_tab_biography_label_bio">Biografia</string>
-    <string name="person_details_screen_tab_biography_also_known_as_female">Também conhecida como</string>
-    <string name="person_details_screen_tab_biography_also_known_as_male">Também conhecido como</string>
+    <string name="person_details_screen_tab_biography_label_gender">Genero</string>
+    <string name="person_details_screen_tab_biography_label_known_as_male">Conhecido por</string>
+    <string name="person_details_screen_tab_biography_label_known_as_female">Conhecida por</string>
+    <string name="person_details_screen_tab_biography_label_known_as_non_binary">Conhecide por</string>
+    <string name="person_details_screen_tab_biography_label_also_known_as_female">Também conhecida como</string>
+    <string name="person_details_screen_tab_biography_label_also_known_as_male">Também conhecido como</string>
+    <string name="person_details_screen_tab_biography_label_also_known_as_non_binary">Também conhecide como</string>
     <string name="person_details_screen_tab_titles">Atuação</string>
     <string name="person_details_screen_tab_titles_as_character">Como: %1s</string>
+    <string name="person_details_screen_content_description_profile">Imagem de perfil %1s</string>
     <!-- endregion -->
 
-    <!-- Poster Component -->
-    <string name="poster_image_content_description">Poster do filme %1s</string>
+    <!-- region: Video Component -->
+    <string name="video_component_content_description_play_icon">Ícone de reprodução</string>
+    <string name="video_component_content_description_trailer_image">Ícone de reprodução</string>
     <!-- endregion -->
 
-    <!-- Highlight Component -->
-    <string name="highlight_image_content_description">Imagem do filme %1s</string>
+    <!-- region: Poster Component -->
+    <string name="poster_content_description_image">Poster do filme %1s</string>
     <!-- endregion -->
 
-    <!-- People Component -->
-    <string name="people_image_content_description">Foto de %1s, personagem de %2s</string>
+    <!-- region: Poster Rail Component -->
+    <string name="poster_rail_label_more">Mais</string>
+    <string name="poster_rail_content_description_icon_more">Ícone de seta para a direita</string>
     <!-- endregion -->
 
-    <!-- Expandable Text Component -->
+    <!-- region: Highlight Component -->
+    <string name="highlight_content_description_image">Imagem do filme %1s</string>
+    <!-- endregion -->
+
+    <!-- region: People Component -->
+    <string name="people_content_description_image">Foto de %1s, personagem de %2s</string>
+    <!-- endregion -->
+
+    <!-- region: Expandable Text Component -->
     <string name="expandable_text_label_show_more">Ver mais</string>
     <string name="expandable_text_label_show_less">Ver menos</string>
+    <!-- endregion -->
+
+    <!-- region : Gender -->
+    <string name="gender_label_unspecified">-</string>
+    <string name="gender_label_male">Masculino</string>
+    <string name="gender_label_female">Feminino</string>
+    <string name="gender_label_non_binary">Não binário</string>
     <!-- endregion -->
 </resources>

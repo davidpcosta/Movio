@@ -17,6 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.GenreComp
@@ -27,8 +29,11 @@ import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
 fun TvShowOverviewTab(
+    navHostController: NavHostController,
     tvShow: TvShow
 ) {
+    val overviewViewModel = viewModel<TvShowOverviewViewModel>()
+
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top,
@@ -106,26 +111,26 @@ fun TvShowOverviewTab(
                 .padding(top = MaterialTheme.spacing.large)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
         )
-//        LazyRow(
-//            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-//            contentPadding = PaddingValues(
-//                horizontal = MaterialTheme.spacing.horizontalMargin
-//            ),
-//            modifier = Modifier
-//                .padding(top = MaterialTheme.spacing.medium)
-//        ) {
-//            items(overviewViewModel.movieCharacter.value) { person ->
-//                PersonComp(
-//                    characterData = person,
-//                    onClick = {
-//                        navHostController.navigate(
-//                            PersonDetailsScreenRoute(
-//                            personId = person.id
-//                        )
-//                        )
-//                    }
-//                )
-//            }
-//        }
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            contentPadding = PaddingValues(
+                horizontal = MaterialTheme.spacing.horizontalMargin
+            ),
+            modifier = Modifier
+                .padding(top = MaterialTheme.spacing.medium)
+        ) {
+            items(overviewViewModel.tvShowCharacter.value) { person ->
+                PersonComp(
+                    characterData = person,
+                    onClick = {
+                        navHostController.navigate(
+                            PersonDetailsScreenRoute(
+                            personId = person.id
+                        )
+                        )
+                    }
+                )
+            }
+        }
     }
 }

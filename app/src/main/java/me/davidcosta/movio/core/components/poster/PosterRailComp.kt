@@ -1,5 +1,6 @@
 package me.davidcosta.movio.core.components.poster
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Poster
@@ -32,24 +34,21 @@ fun PosterRailComp(
     posterRailTitle: String,
     posterRailData: List<Poster>,
     posterSize: PosterSize = PosterSize.Small,
-    onPosterClick: (Int) -> Unit = {}
+    onPosterClick: (Int) -> Unit = {},
+    onSeeMoreClick: (() -> Unit)? = null
 ) {
     Column (
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .padding(vertical = MaterialTheme.spacing.small)
     ) {
         Row (
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .padding(
-                    horizontal = MaterialTheme.spacing.horizontalMargin
-                )
-                .padding(
-                    top = MaterialTheme.spacing.medium,
-                    bottom = MaterialTheme.spacing.small
-                )
+                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                .padding(bottom = MaterialTheme.spacing.small)
                 .fillMaxWidth()
         ) {
             Text(
@@ -57,26 +56,29 @@ fun PosterRailComp(
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.weight(1f)
             )
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .wrapContentWidth()
-            )  {
-                Text(
-                    text = "Mais",
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.primary,
+            onSeeMoreClick?.let {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .padding(start = MaterialTheme.spacing.tiny)
-                )
-                Icon(
-                    imageVector = Icons.Arrow,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier
-                        .padding(all = MaterialTheme.spacing.tiny)
-                        .size(dimensionResource(R.dimen.icon_see_more_size))
-                )
+                        .wrapContentWidth()
+                        .clickable { it() }
+                )  {
+                    Text(
+                        text = stringResource(R.string.poster_rail_label_more),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .padding(start = MaterialTheme.spacing.tiny)
+                    )
+                    Icon(
+                        imageVector = Icons.Arrow,
+                        contentDescription = stringResource(R.string.poster_rail_content_description_icon_more),
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .padding(all = MaterialTheme.spacing.tiny)
+                            .size(dimensionResource(R.dimen.icon_see_more_size))
+                    )
+                }
             }
         }
         Row (

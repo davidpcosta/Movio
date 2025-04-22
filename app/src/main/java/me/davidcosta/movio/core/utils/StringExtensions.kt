@@ -14,6 +14,10 @@ fun String?.orDefault(defaultStr: String): String =
 fun String?.validate(): String? =
     this.takeUnless { it.isNullOrBlank() }
 
+val String?.fullStillPath
+    get() = this?.let { path ->
+        BuildConfig.TMDB_STILL_PATH + path
+    }.orEmpty()
 
 val String?.fullPosterPath
     get() = this?.let { path ->

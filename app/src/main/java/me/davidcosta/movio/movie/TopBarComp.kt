@@ -58,7 +58,7 @@ fun TopBarComp(
                             model = movie.posterPath,
                             contentScale = ContentScale.Crop,
                             contentDescription = stringResource(
-                                R.string.poster_image_content_description,
+                                R.string.poster_content_description_image,
                                 movie.title
                             ),
                             modifier = Modifier

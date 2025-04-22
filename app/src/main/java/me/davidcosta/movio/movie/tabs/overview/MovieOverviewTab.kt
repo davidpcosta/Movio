@@ -31,11 +31,11 @@ import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
-fun OverviewTab(
+fun MovieOverviewTab(
     navHostController: NavHostController,
     movie: Movie
 ) {
-    val overviewViewModel = viewModel<OverviewViewModel>()
+    val movieOverviewViewModel = viewModel<MovieOverviewViewModel>()
 
     Column(
         horizontalAlignment = Alignment.Start,
@@ -45,7 +45,7 @@ fun OverviewTab(
             .verticalScroll(rememberScrollState())
     ) {
         Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.large)
                 .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
@@ -122,7 +122,7 @@ fun OverviewTab(
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
-            items(overviewViewModel.movieCharacter.value) { person ->
+            items(movieOverviewViewModel.movieCharacter.value) { person ->
                 PersonComp(
                     characterData = person,
                     onClick = {
@@ -140,7 +140,7 @@ fun OverviewTab(
 @Composable
 private fun PreviewOverviewTab() {
     AppTheme(changeSystemBarStyle = false) {
-        OverviewTab(
+        MovieOverviewTab(
             navHostController = rememberNavController(),
             movie = Movie(
                 title = "Adolescencia",

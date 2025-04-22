@@ -19,7 +19,7 @@ fun MovioNavHost(navHosController: NavHostController) {
         composable<HomeScreenRoute> {
             HomeScreen(navHosController)
         }
-        composable<MovieDetailsScreenRoute> {
+        composable<MovieScreenRoute> {
             MovieScreen(navHosController)
         }
         composable<TvShowScreenRoute> {
@@ -35,7 +35,7 @@ fun MovioNavHost(navHosController: NavHostController) {
 object HomeScreenRoute
 
 @Serializable
-data class MovieDetailsScreenRoute(
+data class MovieScreenRoute(
     val movieId: Int
 )
 

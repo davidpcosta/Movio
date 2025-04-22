@@ -14,17 +14,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import me.davidcosta.movio.MovieDetailsScreenRoute
+import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.core.components.poster.PosterComp
 import me.davidcosta.movio.core.components.poster.PosterSize
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun SimilarTab(
+fun MovieSimilarTab(
     navHostController: NavHostController
 ) {
 
-    val similarViewModel = viewModel<SimilarViewModel>()
+    val movieSimilarViewModel = viewModel<MovieSimilarViewModel>()
 
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = PosterSize.Medium.width),
@@ -36,7 +36,7 @@ fun SimilarTab(
         ),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(similarViewModel.similarMovies.value) { poster ->
+        items(movieSimilarViewModel.similarMovies.value) { poster ->
             Box(
                 contentAlignment = Alignment.TopCenter,
                 modifier = Modifier
@@ -44,7 +44,7 @@ fun SimilarTab(
             ) {
                 PosterComp(posterData = poster, posterSize = PosterSize.Medium) { id ->
                     navHostController.navigate(
-                        MovieDetailsScreenRoute(movieId = id)
+                        MovieScreenRoute(movieId = id)
                     )
                 }
             }

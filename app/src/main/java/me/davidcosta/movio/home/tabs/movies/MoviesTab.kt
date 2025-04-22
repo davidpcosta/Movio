@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import me.davidcosta.movio.MovieDetailsScreenRoute
+import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.poster.PosterRailComp
 
@@ -21,7 +21,7 @@ fun MoviesTab(
     val viewModel = viewModel<MoviesViewModel>()
 
     val onPosterClick = { id: Int ->
-        navController.navigate(MovieDetailsScreenRoute(
+        navController.navigate(MovieScreenRoute(
             movieId = id
         ))
     }

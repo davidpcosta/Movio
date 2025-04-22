@@ -11,6 +11,8 @@ data class Person(
     val birthday: String?,
     val placeOfBirth: String?,
     val biography: String?,
+    val knownForDepartment: String,
+    val gender: Gender,
     val alsoKnownAs: List<String>?
 )
 
@@ -22,5 +24,7 @@ fun PersonModel.toPerson() =
         birthday = birthday.formatMediumDate(),
         placeOfBirth = placeOfBirth,
         biography = biography,
+        knownForDepartment = knownForDepartment,
+        gender = gender.toGender(),
         alsoKnownAs = alsoKnownAs
     )
