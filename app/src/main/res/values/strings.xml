@@ -5,6 +5,8 @@
     <string name="app_name">Movio</string>
     <string name="app_slogan">Unlock Your Movie Magic</string>
 
+    <string name="app_toolbar_content_description_icon_back">Ícone de seta apontando para a esquerda</string>
+
     <!-- region: Common -->
     <string name="common_label_not_available_short">n/a</string>
     <string name="common_label_overview_unavailable">Sinopse indisponível.</string>
@@ -73,7 +75,7 @@
     <!-- endregion -->
 
     <!-- region: Poster Component -->
-    <string name="poster_content_description_image">Poster do filme %1s</string>
+    <string name="poster_content_description_image">Poster de %1s</string>
     <!-- endregion -->
 
     <!-- region: Poster Rail Component -->

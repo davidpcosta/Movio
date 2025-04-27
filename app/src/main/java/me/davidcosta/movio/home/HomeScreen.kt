@@ -1,11 +1,9 @@
 package me.davidcosta.movio.home
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -23,10 +21,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.home.tabs.TabsComp
+import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.MovioTabRow
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.home.tabs.HomeTabs
 import me.davidcosta.movio.home.tabs.Screen
+import me.davidcosta.movio.home.tabs.title
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,35 +51,27 @@ fun HomeScreen(navController: NavHostController) {
             .nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
-            TabsComp(selectedIndex = selectedIndex) { index ->
-                selectedIndex = index
-                coroutineScope.launch {
-                    pagerState.animateScrollToPage(index)
+            MovioTabRow(
+                selectedIndex = selectedIndex
+            ) {
+                HomeTabs.entries.forEachIndexed { index, tab ->
+                    MovioTab(
+                        selected = selectedIndex == index,
+                        title = tab.title
+                    ) {
+                        coroutineScope.launch {
+                            pagerState.animateScrollToPage(index)
+                        }
+                    }
                 }
             }
-            TabContent(
-                pagerState = pagerState,
-                navController = navController
-            )
-        }
-    }
-}
-
-@Composable
-private fun TabContent(
-    modifier: Modifier = Modifier,
-    pagerState: PagerState,
-    navController: NavHostController
-    ) {
-    HorizontalPager(
-        state = pagerState,
-    ) { index ->
-        Box(
-            modifier = modifier
-        ) {
-            HomeTabs
-                .entries[index]
-                .Screen(navController)
+            HorizontalPager(
+                state = pagerState,
+            ) { index ->
+                HomeTabs
+                    .entries[index]
+                    .Screen(navController)
+                }
         }
     }
 }

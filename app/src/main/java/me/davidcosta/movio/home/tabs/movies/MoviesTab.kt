@@ -48,7 +48,8 @@ fun MoviesTab(
         )
         PosterRailComp(
             posterRailTitle = stringResource(R.string.home_screen_tab_movies_upcoming),
-            posterRailData = viewModel.upcomingTitles.value
+            posterRailData = viewModel.upcomingTitles.value,
+            onPosterClick = onPosterClick
         )
     }
 }

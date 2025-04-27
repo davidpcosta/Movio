@@ -4,7 +4,6 @@ import com.google.gson.GsonBuilder
 import me.davidcosta.movio.BuildConfig
 import me.davidcosta.movio.core.api.parser.LocalDateParser
 import me.davidcosta.movio.core.api.parser.LocalDateTimeParser
-import me.davidcosta.movio.core.domain.Person
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request

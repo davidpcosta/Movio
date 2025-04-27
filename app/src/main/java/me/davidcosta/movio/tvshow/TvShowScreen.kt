@@ -24,73 +24,76 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
+import me.davidcosta.movio.core.components.core.tab.MovioScrollableTabRow
+import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.TabStyle
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.movie.MovieScreen
-import me.davidcosta.movio.tvshow.tabs.Screen
-import me.davidcosta.movio.tvshow.tabs.TabsComp
-import me.davidcosta.movio.tvshow.tabs.TvShowTabs
+import me.davidcosta.movio.tvshow.tabs.episodes.TvShowEpisodesTab
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TvShowScreen(navController: NavHostController) {
-        val coroutineScope = rememberCoroutineScope()
-        val viewModel = viewModel<TvShowViewModel>()
-        var selectedIndex by remember { mutableIntStateOf(0) }
-        val pagerState = rememberPagerState { TvShowTabs.entries.size }
-        val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    val coroutineScope = rememberCoroutineScope()
+    val viewModel = viewModel<TvShowViewModel>()
+    var selectedIndex by remember { mutableIntStateOf(0) }
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
-        LaunchedEffect(pagerState.currentPage) {
-            selectedIndex = pagerState.currentPage
+    Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            TopBarComp(
+                scrollBehavior = scrollBehavior,
+                tvShow = viewModel.tvShowDetails.value,
+                navigateBack = {
+                    navController.popBackStack()
+                }
+            )
         }
+    ) { innerPadding ->
+        Box(Modifier.padding(innerPadding)) {
+            viewModel.tvShowDetails.value?.let { tvShow ->
+                val pagerState = rememberPagerState { tvShow.seasons.size }
+                val selectTab = { index: Int ->
+                    selectedIndex = index
+                    coroutineScope.launch {
+                        pagerState.animateScrollToPage(index)
+                    }
+                }
 
-        Scaffold(
-            topBar = {
-                TopBarComp(
-                    scrollBehavior = scrollBehavior,
-                    tvShow = viewModel.tvShowDetails.value
-                )
-            },
-            modifier = Modifier
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
-        ) { innerPadding ->
-            Box(
-                modifier = Modifier
-                    .padding(innerPadding)
-            ) {
-                viewModel.tvShowDetails.value?.let { tvShow ->
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .fillMaxSize()
+                LaunchedEffect(pagerState.currentPage) {
+                    selectedIndex = pagerState.currentPage
+                }
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    MovioScrollableTabRow(
+                        selectedIndex = selectedIndex,
+                        tabStyle = TabStyle.Secondary
                     ) {
-                        TabsComp(
-                            selectedIndex = selectedIndex,
-                            modifier = Modifier
-                        ) { index ->
-                            selectedIndex = index
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(index)
-                            }
+                        tvShow.seasons.forEachIndexed { index, season ->
+                            MovioTab(
+                                title = season.name,
+                                selected =  selectedIndex == index,
+                                onClick = {
+                                    selectTab(index)
+                                }
+                            )
                         }
-                        HorizontalPager(
-                            state = pagerState,
-                        ) { index ->
-                            Box(
-                                modifier = Modifier
-                            ) {
-                                TvShowTabs
-                                    .entries[index]
-                                    .Screen(
-                                        navHostController = navController,
-                                        tvShow = tvShow
-                                    )
-                            }
-                        }
+                    }
+                    HorizontalPager(state = pagerState) { index ->
+                        TvShowEpisodesTab(
+                            tvShowId = tvShow.id,
+                            seasonNumber = tvShow.seasons[index].seasonNumber
+                        )
                     }
                 }
             }
         }
     }
+}
 
     @Preview(showBackground = true, showSystemUi = true)
     @Composable

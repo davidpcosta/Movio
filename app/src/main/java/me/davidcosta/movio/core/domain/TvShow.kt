@@ -28,5 +28,5 @@ fun TvShowDetailsModel.toTvShow() =
         firstAirYear = firstAirDate.year.toString(),
         voteAverage = voteAverage.formattedVoteAverage,
         genres = genres.map { it.name },
-        seasons = seasons.map { it.toSeason() }
+        seasons = seasons.sortedByDescending { it.seasonNumber }.map { it.toSeason() }
     )

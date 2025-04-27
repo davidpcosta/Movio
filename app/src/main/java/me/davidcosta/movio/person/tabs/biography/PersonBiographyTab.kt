@@ -15,18 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Person
-import me.davidcosta.movio.core.domain.labelKnownAs
 import me.davidcosta.movio.core.domain.label
+import me.davidcosta.movio.core.domain.labelKnownAs
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
 fun PersonBiographyTab(person: Person) {
     Column(
+        verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-            .fillMaxSize()
+            .padding(bottom = MaterialTheme.spacing.medium)
             .verticalScroll(rememberScrollState())
+            .fillMaxSize()
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)

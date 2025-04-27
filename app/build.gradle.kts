@@ -22,6 +22,10 @@ android {
         android.buildFeatures.buildConfig = true
     }
 
+//    testOptions {
+//        unitTests.isIncludeAndroidResources = true
+//    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -68,6 +72,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 
+    testImplementation(libs.robolectric)
+    implementation(libs.androidx.ui.test.junit4.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

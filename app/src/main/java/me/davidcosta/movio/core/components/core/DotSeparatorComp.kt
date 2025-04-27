@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 fun DotSeparatorComp(
     modifier: Modifier = Modifier
 ) {
-    val color = MaterialTheme.colorScheme.secondary
+    val color = MaterialTheme.colorScheme.primary
     Box(
         modifier = modifier
     ) {

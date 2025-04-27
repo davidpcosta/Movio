@@ -15,17 +15,21 @@
         android:theme="@style/Theme.Movio"
         tools:targetApi="31">
         <activity
-            android:name=".movie.MovieDetailActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Movio" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Movio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="myapp" />
+                <data android:host="movio.davidcosta.me" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
     </application>

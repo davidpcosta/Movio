@@ -4,12 +4,18 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -45,7 +51,7 @@ fun PersonTitlesTab(navHostController: NavHostController) {
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.tiny)
+        verticalArrangement = Arrangement.Top
     ) {
         items(viewModel.personCredits.value) { credit ->
             MovieItem(personCredit = credit) {
@@ -64,6 +70,7 @@ fun PersonTitlesTab(navHostController: NavHostController) {
                     }
                 )
             }
+            Spacer(Modifier.height(MaterialTheme.spacing.tiny))
         }
     }
 }
@@ -81,12 +88,15 @@ private fun MovieItem(
             isVisible = isVisible.not()
         }
     ) {
-        Column {
+        Column(
+            verticalArrangement = Arrangement.Top
+        ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
                     .padding(vertical = MaterialTheme.spacing.small)
+                    .heightIn(min = 40.dp)
             ) {
                 Text(
                     style = MaterialTheme.typography.bodyMedium,

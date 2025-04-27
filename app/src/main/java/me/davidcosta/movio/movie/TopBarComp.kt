@@ -12,14 +12,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -27,7 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
+import me.davidcosta.movio.core.components.core.DSTopBar
 import me.davidcosta.movio.core.components.core.DotSeparatorComp
+import me.davidcosta.movio.core.components.poster.PosterSize
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.Icons
@@ -37,13 +36,16 @@ import me.davidcosta.movio.core.utils.orDefault
 @ExperimentalMaterial3Api
 @Composable
 fun TopBarComp(
-    modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior,
-    movie: Movie?
+    movie: Movie?,
+    navigateBack: () -> Unit
 ) {
-    TopAppBar(
-        title = {
-            movie?.let {
+    movie?.let {
+        DSTopBar(
+            scrollBehavior = scrollBehavior,
+            navigateBack = navigateBack,
+            collapsedTitle = movie.title,
+            expandedTitle = {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
@@ -51,9 +53,7 @@ fun TopBarComp(
                 ) {
                     Surface(
                         shape = MaterialTheme.shapes.large,
-                        modifier = Modifier
-                            .padding(top = MaterialTheme.spacing.large)
-                    )  {
+                    ) {
                         AsyncImage(
                             model = movie.posterPath,
                             contentScale = ContentScale.Crop,
@@ -62,8 +62,8 @@ fun TopBarComp(
                                 movie.title
                             ),
                             modifier = Modifier
-                                .width(dimensionResource(R.dimen.movie_detail_poster_width))
-                                .height(dimensionResource(R.dimen.movie_detail_poster_height))
+                                .width(PosterSize.Medium.width)
+                                .height(PosterSize.Medium.height)
                         )
                     }
                     Row(
@@ -102,19 +102,8 @@ fun TopBarComp(
                     }
                 }
             }
-        },
-        scrollBehavior = scrollBehavior,
-        expandedHeight = 360.dp,
-        colors = TopAppBarColors(
-            containerColor = Color.Transparent,
-            scrolledContainerColor = Color.Transparent,
-            navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
-            titleContentColor = MaterialTheme.colorScheme.onBackground,
-            actionIconContentColor = MaterialTheme.colorScheme.onBackground
-        ),
-        modifier = modifier
-            .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-    )
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -133,7 +122,8 @@ private fun PreviewTopBarComp() {
                 runtime = "1h56m",
                 voteAverage = "2,9",
                 genres = emptyList()
-            )
+            ),
+            navigateBack = {}
         )
     }
 }
