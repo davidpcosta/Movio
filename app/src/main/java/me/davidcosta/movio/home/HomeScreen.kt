@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.DSTab
 import me.davidcosta.movio.core.components.core.tab.MovioTabRow
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.home.tabs.HomeTabs
@@ -55,7 +55,7 @@ fun HomeScreen(navController: NavHostController) {
                 selectedIndex = selectedIndex
             ) {
                 HomeTabs.entries.forEachIndexed { index, tab ->
-                    MovioTab(
+                    DSTab(
                         selected = selectedIndex == index,
                         title = tab.title
                     ) {

@@ -34,7 +34,7 @@ import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun VideoComp(
+fun DSVideo(
     modifier: Modifier = Modifier,
     thumbData: Video,
     onClick: (String) -> Unit = {}
@@ -114,7 +114,7 @@ private fun gradient(): Brush {
 @Composable
 fun PreviewThumbComp() {
     AppTheme(changeSystemBarStyle = false) {
-        VideoComp(
+        DSVideo(
             thumbData = Video(
                 id = "001",
                 thumbPath = "path",

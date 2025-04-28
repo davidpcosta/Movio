@@ -29,7 +29,7 @@ import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun PosterRailComp(
+fun DSPosterRail(
     modifier: Modifier = Modifier,
     posterRailTitle: String,
     posterRailData: List<Poster>,
@@ -94,7 +94,7 @@ fun PosterRailComp(
                 modifier = Modifier.height(posterSize.height)
             ) {
                 items(posterRailData) { poster ->
-                    PosterComp(
+                    DSPoster(
                         posterData = poster,
                         onPosterClick = { id ->
                             onPosterClick(id)
@@ -110,7 +110,7 @@ fun PosterRailComp(
 @Composable
 fun PreviewPosterRailComp() {
     AppTheme (changeSystemBarStyle = false) {
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = "A fada fala alfafa",
             posterRailData = listOf(
                 Poster(

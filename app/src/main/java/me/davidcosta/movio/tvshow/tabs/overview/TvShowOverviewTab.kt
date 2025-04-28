@@ -21,8 +21,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.GenreComp
-import me.davidcosta.movio.core.components.person.PersonComp
+import me.davidcosta.movio.core.components.core.DSGenre
+import me.davidcosta.movio.core.components.person.DSPerson
 import me.davidcosta.movio.core.domain.TvShow
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.core.utils.orDefault
@@ -101,7 +101,7 @@ fun TvShowOverviewTab(
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
             items(tvShow.genres) { genre ->
-                GenreComp(text = genre)
+                DSGenre(text = genre)
             }
         }
         Text(
@@ -120,7 +120,7 @@ fun TvShowOverviewTab(
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
             items(overviewViewModel.tvShowCharacter.value) { person ->
-                PersonComp(
+                DSPerson(
                     characterData = person,
                     onClick = {
                         navHostController.navigate(

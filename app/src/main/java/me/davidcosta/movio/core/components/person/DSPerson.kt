@@ -21,7 +21,7 @@ import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun PersonComp(
+fun DSPerson(
     modifier: Modifier = Modifier,
     characterData: Character,
     onClick: () -> Unit
@@ -67,7 +67,7 @@ fun PersonComp(
 @Composable
 fun PersonCompPreview() {
     AppTheme(changeSystemBarStyle = false) {
-        PersonComp(
+        DSPerson(
             characterData = Character(
                 id = 1,
                 name = "Rick Sanches",

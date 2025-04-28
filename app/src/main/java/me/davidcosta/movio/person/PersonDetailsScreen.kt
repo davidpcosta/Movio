@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -36,7 +35,7 @@ import coil.compose.AsyncImage
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DSTopBar
-import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.DSTab
 import me.davidcosta.movio.core.components.core.tab.MovioTabRow
 import me.davidcosta.movio.core.components.core.tab.TabStyle
 import me.davidcosta.movio.core.theme.AppTheme
@@ -131,7 +130,7 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                     tabStyle = TabStyle.Secondary
                 ) {
                     PersonScreenTabs.entries.forEachIndexed { index, tab ->
-                        MovioTab(
+                        DSTab(
                             title = tab.title,
                             selected = selectedIndex == index
                         ) {

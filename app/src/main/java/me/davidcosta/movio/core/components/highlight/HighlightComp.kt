@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -25,10 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.ScoreComp
+import me.davidcosta.movio.core.components.core.DSScore
 import me.davidcosta.movio.core.domain.Title
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
@@ -58,7 +55,7 @@ fun HighlightComp(
                     .fillMaxWidth()
                     .clickable {  }
             )
-            ScoreComp(
+            DSScore(
                 scoreData = highlightData.voteAverage,
                 modifier = Modifier
                     .wrapContentSize(align = Alignment.TopEnd)

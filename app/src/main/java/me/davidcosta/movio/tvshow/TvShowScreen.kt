@@ -24,8 +24,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.core.components.core.tab.MovioScrollableTabRow
-import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.DSScrollableTabRow
+import me.davidcosta.movio.core.components.core.tab.DSTab
 import me.davidcosta.movio.core.components.core.tab.TabStyle
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.movie.MovieScreen
@@ -69,12 +69,12 @@ fun TvShowScreen(navController: NavHostController) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    MovioScrollableTabRow(
+                    DSScrollableTabRow(
                         selectedIndex = selectedIndex,
                         tabStyle = TabStyle.Secondary
                     ) {
                         tvShow.seasons.forEachIndexed { index, season ->
-                            MovioTab(
+                            DSTab(
                                 title = season.name,
                                 selected =  selectedIndex == index,
                                 onClick = {

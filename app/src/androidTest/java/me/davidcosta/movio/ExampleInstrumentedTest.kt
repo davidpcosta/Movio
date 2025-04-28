@@ -1,11 +1,10 @@
 package me.davidcosta.movio
 
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import me.davidcosta.movio.core.components.poster.PosterComp
+import me.davidcosta.movio.core.components.poster.DSPoster
 import me.davidcosta.movio.core.domain.Poster
 
 import org.junit.Test
@@ -35,7 +34,7 @@ class ExampleInstrumentedTest {
     @Test
     fun testScreen() {
         rule.setContent {
-            PosterComp(
+            DSPoster(
                 posterData = Poster(
                     id = 1,
                     title = "Blade Runner",

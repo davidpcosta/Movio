@@ -11,7 +11,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.R
 import me.davidcosta.movio.TvShowScreenRoute
-import me.davidcosta.movio.core.components.poster.PosterRailComp
+import me.davidcosta.movio.core.components.poster.DSPosterRail
 
 @Composable
 fun TvShowsTab(
@@ -33,22 +33,22 @@ fun TvShowsTab(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_airing_today),
             posterRailData = viewModel.airingTodayTvShows.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_on_the_air),
             posterRailData = viewModel.onTheAirTvShows.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_popular),
             posterRailData = viewModel.popularTvShows.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_tv_shows_top_rated),
             posterRailData = viewModel.topRatedTvShows.value,
             onPosterClick = onPosterClick

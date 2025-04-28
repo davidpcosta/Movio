@@ -21,7 +21,7 @@ import androidx.compose.ui.text.withStyle
 import me.davidcosta.movio.R
 
 @Composable
-fun ExpandableText(
+fun DSExpandableText(
     modifier: Modifier = Modifier,
     text: String,
     textColor: Color = MaterialTheme.colorScheme.secondary,

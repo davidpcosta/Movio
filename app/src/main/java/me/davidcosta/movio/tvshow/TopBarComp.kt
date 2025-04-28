@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DSTopBar
-import me.davidcosta.movio.core.components.core.DotSeparatorComp
+import me.davidcosta.movio.core.components.core.DSDotSeparator
 import me.davidcosta.movio.core.components.poster.PosterSize
 import me.davidcosta.movio.core.domain.TvShow
 import me.davidcosta.movio.core.theme.Icons
@@ -72,7 +72,7 @@ fun TopBarComp(
                             text = tvShow.firstAirYear.orDefault("-"),
                             style = MaterialTheme.typography.titleMedium
                         )
-                        DotSeparatorComp(
+                        DSDotSeparator(
                             modifier = Modifier
                                 .padding(horizontal = MaterialTheme.spacing.small)
                         )
@@ -84,7 +84,7 @@ fun TopBarComp(
                             ),
                             style = MaterialTheme.typography.titleMedium
                         )
-                        DotSeparatorComp(
+                        DSDotSeparator(
                             modifier = Modifier
                                 .padding(horizontal = MaterialTheme.spacing.small)
                         )

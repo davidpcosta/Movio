@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun MovioScrollableTabRow(
+fun DSScrollableTabRow(
     modifier: Modifier = Modifier,
     selectedIndex: Int,
     tabStyle: TabStyle = TabStyle.Primary,

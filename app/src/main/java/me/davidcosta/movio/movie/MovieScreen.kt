@@ -24,7 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import me.davidcosta.movio.core.components.core.tab.MovioTab
+import me.davidcosta.movio.core.components.core.tab.DSTab
 import me.davidcosta.movio.core.components.core.tab.MovioTabRow
 import me.davidcosta.movio.core.components.core.tab.TabStyle
 import me.davidcosta.movio.core.theme.AppTheme
@@ -70,7 +70,7 @@ fun MovieScreen(
                         tabStyle = TabStyle.Secondary
                     ) {
                         MovieTabs.entries.forEachIndexed { index, tab ->
-                            MovioTab(
+                            DSTab(
                                 selected = selectedIndex == index,
                                 title = tab.title
                             ) {

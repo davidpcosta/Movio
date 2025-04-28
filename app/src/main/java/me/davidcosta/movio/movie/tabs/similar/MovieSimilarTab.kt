@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.MovieScreenRoute
-import me.davidcosta.movio.core.components.poster.PosterComp
+import me.davidcosta.movio.core.components.poster.DSPoster
 import me.davidcosta.movio.core.components.poster.PosterSize
 import me.davidcosta.movio.core.theme.spacing
 
@@ -42,7 +42,7 @@ fun MovieSimilarTab(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                PosterComp(posterData = poster, posterSize = PosterSize.Medium) { id ->
+                DSPoster(posterData = poster, posterSize = PosterSize.Medium) { id ->
                     navHostController.navigate(
                         MovieScreenRoute(movieId = id)
                     )

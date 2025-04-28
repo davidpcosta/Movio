@@ -20,7 +20,7 @@ import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.theme.AppTheme
 
 @Composable
-fun PosterComp(
+fun DSPoster(
     modifier: Modifier = Modifier,
     posterData: Poster,
     posterSize: PosterSize = PosterSize.Small,
@@ -62,7 +62,7 @@ fun PosterComp(
 @Composable
 fun PreviewPosterComp() {
     AppTheme (changeSystemBarStyle = false) {
-        PosterComp(
+        DSPoster(
             posterData = Poster(
                 id = 1,
                 title = "Adolescense",

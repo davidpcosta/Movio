@@ -18,7 +18,7 @@ import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun ScoreComp(
+fun DSScore(
     modifier: Modifier = Modifier,
     scoreData: String
 ) {
@@ -45,7 +45,7 @@ fun ScoreComp(
 @Composable
 fun PreviewScoreComp() {
     AppTheme(changeSystemBarStyle = false) {
-        ScoreComp(
+        DSScore(
             scoreData = "9,8"
         )
     }

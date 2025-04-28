@@ -6,7 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun MovioTab(
+fun DSTab(
     title: String,
     selected: Boolean,
     onClick: () -> Unit

@@ -11,7 +11,7 @@ import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
-fun GenreComp(
+fun DSGenre(
     modifier: Modifier = Modifier,
     text: String
 ) {
@@ -36,7 +36,7 @@ fun GenreComp(
 @Composable
 fun GenreCompPreview() {
     AppTheme(changeSystemBarStyle = false) {
-        GenreComp(
+        DSGenre(
             text = "Genero"
         )
     }

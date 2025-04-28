@@ -11,11 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,7 +32,7 @@ import androidx.navigation.compose.rememberNavController
 import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.R
 import me.davidcosta.movio.TvShowScreenRoute
-import me.davidcosta.movio.core.components.poster.PosterComp
+import me.davidcosta.movio.core.components.poster.DSPoster
 import me.davidcosta.movio.core.domain.MediaType
 import me.davidcosta.movio.core.domain.PersonCredit
 import me.davidcosta.movio.core.domain.toPoster
@@ -126,7 +123,7 @@ private fun MovieItem(
                         .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
                         .padding(bottom = MaterialTheme.spacing.medium)
                 ) {
-                    PosterComp(
+                    DSPoster(
                         posterData = personCredit.toPoster(),
                         onPosterClick = { onClick() }
                     )

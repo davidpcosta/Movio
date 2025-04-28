@@ -25,4 +25,4 @@ fun AppTheme(
 }
 
 val MaterialTheme.spacing: CustomSpacing
-@Composable @ReadOnlyComposable get() = LocalSpacing.current
+    @Composable @ReadOnlyComposable get() = LocalSpacing.current/

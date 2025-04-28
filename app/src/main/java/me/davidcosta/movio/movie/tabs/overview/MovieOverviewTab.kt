@@ -23,8 +23,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import me.davidcosta.movio.PersonDetailsScreenRoute
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.GenreComp
-import me.davidcosta.movio.core.components.person.PersonComp
+import me.davidcosta.movio.core.components.core.DSGenre
+import me.davidcosta.movio.core.components.person.DSPerson
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.core.theme.spacing
@@ -104,7 +104,7 @@ fun MovieOverviewTab(
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
             items(movie.genres) { genre ->
-                GenreComp(text = genre)
+                DSGenre(text = genre)
             }
         }
         Text(
@@ -123,7 +123,7 @@ fun MovieOverviewTab(
                 .padding(top = MaterialTheme.spacing.medium)
         ) {
             items(movieOverviewViewModel.movieCharacter.value) { person ->
-                PersonComp(
+                DSPerson(
                     characterData = person,
                     onClick = {
                         navHostController.navigate(PersonDetailsScreenRoute(

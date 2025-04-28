@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import me.davidcosta.movio.core.components.VideoComp
+import me.davidcosta.movio.core.components.DSVideo
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
@@ -34,7 +34,7 @@ fun MovieTrailersTab(
         modifier = Modifier.fillMaxSize()
     ) {
         items(movieTrailersViewModel.movieVideos.value) { video ->
-            VideoComp(
+            DSVideo(
                 thumbData = video,
                 onClick = { videoPath ->
                     goToVideo(videoPath)

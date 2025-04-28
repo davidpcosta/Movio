@@ -11,7 +11,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.poster.PosterRailComp
+import me.davidcosta.movio.core.components.poster.DSPosterRail
 
 @Composable
 fun MoviesTab(
@@ -31,22 +31,22 @@ fun MoviesTab(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_movies_now_playing),
             posterRailData = viewModel.nowPlayingTitles.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_movies_top_rated),
             posterRailData = viewModel.topRatedTitles.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_movies_popular),
             posterRailData = viewModel.popularTitles.value,
             onPosterClick = onPosterClick
         )
-        PosterRailComp(
+        DSPosterRail(
             posterRailTitle = stringResource(R.string.home_screen_tab_movies_upcoming),
             posterRailData = viewModel.upcomingTitles.value,
             onPosterClick = onPosterClick
