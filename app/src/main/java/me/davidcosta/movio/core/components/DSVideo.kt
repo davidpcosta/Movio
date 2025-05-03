@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,8 +29,12 @@ import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Video
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.Icons
+import me.davidcosta.movio.core.theme.color
+import me.davidcosta.movio.core.theme.shapes
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSVideo(
@@ -46,7 +49,7 @@ fun DSVideo(
         modifier = modifier
     ) {
         Surface(
-            shape = MaterialTheme.shapes.large,
+            shape = DS.shapes.large,
             modifier = Modifier
                 .width(width)
                 .height(height)
@@ -70,7 +73,7 @@ fun DSVideo(
                 Icon(
                     imageVector = Icons.Play,
                     contentDescription = stringResource(R.string.video_component_content_description_play_icon),
-                    tint = MaterialTheme.colorScheme.secondary,
+                    tint = DS.color.secondary,
                     modifier = Modifier
                         .padding(bottom = 40.dp)
                         .size(40.dp)
@@ -79,20 +82,20 @@ fun DSVideo(
                 Column(
                     verticalArrangement = Arrangement.Bottom,
                     modifier = Modifier
-                        .padding(MaterialTheme.spacing.medium)
+                        .padding(DS.spacing.medium)
                         .fillMaxSize()
                 ) {
                     Text(
                         text = thumbData.name,
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = DS.typography.bodyLarge,
                         maxLines = 1,
-                        modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
+                        modifier = Modifier.padding(top = DS.spacing.tiny)
                     )
                     Text(
                         text = thumbData.publishedAt.orEmpty(),
-                        color = MaterialTheme.colorScheme.secondary,
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
+                        color = DS.color.secondary,
+                        style = DS.typography.bodySmall,
+                        modifier = Modifier.padding(top = DS.spacing.tiny)
                     )
                 }
             }

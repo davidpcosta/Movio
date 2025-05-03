@@ -2,7 +2,7 @@ package me.davidcosta.movio.core.api.services
 
 import me.davidcosta.movio.core.api.model.CreditsModel
 import me.davidcosta.movio.core.api.model.TvShowModel
-import me.davidcosta.movio.core.api.model.core.ResultModel
+import me.davidcosta.movio.core.api.model.common.ResultModel
 import me.davidcosta.movio.core.api.model.tvshow.SeasonModel
 import me.davidcosta.movio.core.api.model.tvshow.TvShowDetailsModel
 import retrofit2.http.GET

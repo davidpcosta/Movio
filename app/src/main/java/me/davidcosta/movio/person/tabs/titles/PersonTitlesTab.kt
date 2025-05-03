@@ -37,7 +37,10 @@ import me.davidcosta.movio.core.domain.MediaType
 import me.davidcosta.movio.core.domain.PersonCredit
 import me.davidcosta.movio.core.domain.toPoster
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 import me.davidcosta.movio.core.utils.validate
 import me.davidcosta.movio.core.utils.orDefault
 
@@ -67,7 +70,7 @@ fun PersonTitlesTab(navHostController: NavHostController) {
                     }
                 )
             }
-            Spacer(Modifier.height(MaterialTheme.spacing.tiny))
+            Spacer(Modifier.height(DS.spacing.tiny))
         }
     }
 }
@@ -91,8 +94,8 @@ private fun MovieItem(
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                    .padding(vertical = MaterialTheme.spacing.small)
+                    .padding(horizontal = DS.spacing.horizontalMargin)
+                    .padding(vertical = DS.spacing.small)
                     .heightIn(min = 40.dp)
             ) {
                 Text(
@@ -120,8 +123,8 @@ private fun MovieItem(
             AnimatedVisibility(visible = isVisible) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                        .padding(bottom = MaterialTheme.spacing.medium)
+                        .padding(horizontal = DS.spacing.horizontalMargin)
+                        .padding(bottom = DS.spacing.medium)
                 ) {
                     DSPoster(
                         posterData = personCredit.toPoster(),
@@ -129,9 +132,9 @@ private fun MovieItem(
                     )
                     Column {
                         Text(
-                            modifier = Modifier.padding(start = MaterialTheme.spacing.medium),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.padding(start = DS.spacing.medium),
+                            style = DS.typography.bodyMedium,
+                            color = DS.color.secondary,
                             text = personCredit.overview.orDefault(stringResource(R.string.common_label_overview_unavailable)),
                         )
                     }

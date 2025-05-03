@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,8 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.Icons
+import me.davidcosta.movio.core.theme.color
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSScore(
@@ -28,15 +30,15 @@ fun DSScore(
     ){
         Icon(
             imageVector = Icons.StarRate,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = DS.color.primary,
             contentDescription = stringResource(R.string.movie_detail_screen_content_description_icon_rate),
             modifier = Modifier
                 .size(16.dp)
-                .padding(end = MaterialTheme.spacing.tiny)
+                .padding(end = DS.spacing.tiny)
         )
         Text(
             text = scoreData,
-            style = MaterialTheme.typography.titleSmall
+            style = DS.typography.titleSmall
         )
     }
 }

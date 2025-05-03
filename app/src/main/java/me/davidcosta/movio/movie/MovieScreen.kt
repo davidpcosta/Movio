@@ -25,8 +25,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.core.components.core.tab.DSTab
-import me.davidcosta.movio.core.components.core.tab.MovioTabRow
-import me.davidcosta.movio.core.components.core.tab.TabStyle
+import me.davidcosta.movio.core.components.core.tab.DSTabRow
+import me.davidcosta.movio.core.components.core.tab.DSTabStyle
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.movie.tabs.MovieTabs
 import me.davidcosta.movio.movie.tabs.Screen
@@ -52,10 +52,8 @@ fun MovieScreen(
         topBar = {
             TopBarComp(
                 scrollBehavior = scrollBehavior,
-                movie = viewModel.movieDetail.value,
-                navigateBack = {
-                    navController.popBackStack()
-                }
+                navHostController = navController,
+                movie = viewModel.movieDetail.value
             )
         }
     ) { innerPadding ->
@@ -65,9 +63,9 @@ fun MovieScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    MovioTabRow(
+                    DSTabRow(
                         selectedIndex = selectedIndex,
-                        tabStyle = TabStyle.Secondary
+                        tabStyle = DSTabStyle.Secondary
                     ) {
                         MovieTabs.entries.forEachIndexed { index, tab ->
                             DSTab(

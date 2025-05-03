@@ -26,7 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.core.components.core.tab.DSScrollableTabRow
 import me.davidcosta.movio.core.components.core.tab.DSTab
-import me.davidcosta.movio.core.components.core.tab.TabStyle
+import me.davidcosta.movio.core.components.core.tab.DSTabStyle
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.movie.MovieScreen
 import me.davidcosta.movio.tvshow.tabs.episodes.TvShowEpisodesTab
@@ -45,9 +45,7 @@ fun TvShowScreen(navController: NavHostController) {
             TopBarComp(
                 scrollBehavior = scrollBehavior,
                 tvShow = viewModel.tvShowDetails.value,
-                navigateBack = {
-                    navController.popBackStack()
-                }
+                navHostController = navController
             )
         }
     ) { innerPadding ->
@@ -71,7 +69,7 @@ fun TvShowScreen(navController: NavHostController) {
                 ) {
                     DSScrollableTabRow(
                         selectedIndex = selectedIndex,
-                        tabStyle = TabStyle.Secondary
+                        tabStyle = DSTabStyle.Secondary
                     ) {
                         tvShow.seasons.forEachIndexed { index, season ->
                             DSTab(

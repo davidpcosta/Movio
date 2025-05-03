@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,15 +24,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.Icons
+import me.davidcosta.movio.core.theme.color
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSPosterRail(
     modifier: Modifier = Modifier,
     posterRailTitle: String,
     posterRailData: List<Poster>,
-    posterSize: PosterSize = PosterSize.Small,
+    posterSize: DSPosterSize = DSPosterSize.Small,
     onPosterClick: (Int) -> Unit = {},
     onSeeMoreClick: (() -> Unit)? = null
 ) {
@@ -41,19 +43,19 @@ fun DSPosterRail(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(vertical = MaterialTheme.spacing.small)
+            .padding(vertical = DS.spacing.small)
     ) {
         Row (
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                .padding(bottom = MaterialTheme.spacing.small)
+                .padding(horizontal = DS.spacing.horizontalMargin)
+                .padding(bottom = DS.spacing.small)
                 .fillMaxWidth()
         ) {
             Text(
                 text = posterRailTitle,
-                style = MaterialTheme.typography.headlineMedium,
+                style = DS.typography.headlineMedium,
                 modifier = Modifier.weight(1f)
             )
             onSeeMoreClick?.let {
@@ -65,17 +67,17 @@ fun DSPosterRail(
                 )  {
                     Text(
                         text = stringResource(R.string.poster_rail_label_more),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.primary,
+                        style = DS.typography.titleSmall,
+                        color = DS.color.primary,
                         modifier = Modifier
-                            .padding(start = MaterialTheme.spacing.tiny)
+                            .padding(start = DS.spacing.tiny)
                     )
                     Icon(
                         imageVector = Icons.Arrow,
                         contentDescription = stringResource(R.string.poster_rail_content_description_icon_more),
-                        tint = MaterialTheme.colorScheme.primary,
+                        tint = DS.color.primary,
                         modifier = Modifier
-                            .padding(all = MaterialTheme.spacing.tiny)
+                            .padding(all = DS.spacing.tiny)
                             .size(dimensionResource(R.dimen.icon_see_more_size))
                     )
                 }
@@ -87,9 +89,9 @@ fun DSPosterRail(
             modifier = Modifier.fillMaxWidth()
         ) {
             LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+                horizontalArrangement = Arrangement.spacedBy(DS.spacing.small),
                 contentPadding = PaddingValues(
-                    horizontal = MaterialTheme.spacing.horizontalMargin
+                    horizontal = DS.spacing.horizontalMargin
                 ),
                 modifier = Modifier.height(posterSize.height)
             ) {
@@ -108,17 +110,17 @@ fun DSPosterRail(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewPosterRailComp() {
+fun PreviewDSPosterRail() {
     AppTheme (changeSystemBarStyle = false) {
         DSPosterRail(
             posterRailTitle = "A fada fala alfafa",
-            posterRailData = listOf(
+            posterRailData = (1..4).map { i->
                 Poster(
-                    id = 1,
+                    id = i,
                     title = "Adolescense",
                     posterPath = "poster.jpg"
                 )
-            )
+            }
         )
     }
 }

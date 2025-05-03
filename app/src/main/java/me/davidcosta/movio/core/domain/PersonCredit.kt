@@ -1,6 +1,6 @@
 package me.davidcosta.movio.core.domain
 
-import me.davidcosta.movio.core.api.model.core.MediaTypeModel
+import me.davidcosta.movio.core.api.model.common.MediaTypeModel
 import me.davidcosta.movio.core.api.model.person.PersonCreditModel
 import me.davidcosta.movio.core.api.model.person.PersonCreditsResultModel
 import me.davidcosta.movio.core.utils.formatYear

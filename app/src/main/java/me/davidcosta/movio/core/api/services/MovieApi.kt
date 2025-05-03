@@ -4,7 +4,7 @@ import me.davidcosta.movio.core.api.model.CreditsModel
 import me.davidcosta.movio.core.api.model.MovieDetailsModel
 import me.davidcosta.movio.core.api.model.MovieModel
 import me.davidcosta.movio.core.api.model.VideoResultModel
-import me.davidcosta.movio.core.api.model.core.ResultModel
+import me.davidcosta.movio.core.api.model.common.ResultModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 

@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
 
@@ -35,8 +36,7 @@ fun TopBarComp(
                 Text(
                     text = stringResource(R.string.app_name),
                     style = MaterialTheme.typography.displaySmall,
-                    modifier = Modifier
-                        .padding(bottom = MaterialTheme.spacing.tiny)
+                    modifier = Modifier.padding(bottom = DS.spacing.tiny)
                 )
                 Text(
                     text = stringResource(R.string.app_slogan),

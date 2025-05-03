@@ -1,6 +1,6 @@
 package me.davidcosta.movio.core.domain
 
-import me.davidcosta.movio.core.api.model.core.ResultModel
+import me.davidcosta.movio.core.api.model.common.ResultModel
 import me.davidcosta.movio.core.api.model.TvShowModel
 import me.davidcosta.movio.core.api.model.MovieModel
 import me.davidcosta.movio.core.utils.fullPosterPath

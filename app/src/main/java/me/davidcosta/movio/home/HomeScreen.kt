@@ -22,7 +22,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import me.davidcosta.movio.core.components.core.tab.DSTab
-import me.davidcosta.movio.core.components.core.tab.MovioTabRow
+import me.davidcosta.movio.core.components.core.tab.DSTabRow
 import me.davidcosta.movio.core.theme.AppTheme
 import me.davidcosta.movio.home.tabs.HomeTabs
 import me.davidcosta.movio.home.tabs.Screen
@@ -51,7 +51,7 @@ fun HomeScreen(navController: NavHostController) {
             .nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding).fillMaxSize()) {
-            MovioTabRow(
+            DSTabRow(
                 selectedIndex = selectedIndex
             ) {
                 HomeTabs.entries.forEachIndexed { index, tab ->

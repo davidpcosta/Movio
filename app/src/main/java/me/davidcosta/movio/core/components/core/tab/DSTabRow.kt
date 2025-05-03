@@ -1,43 +1,31 @@
 package me.davidcosta.movio.core.components.core.tab
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
 
 @Composable
-fun MovioTabRow(
-    modifier: Modifier = Modifier,
+fun DSTabRow(
     selectedIndex: Int,
-    tabStyle: TabStyle = TabStyle.Primary,
+    tabStyle: DSTabStyle = DSTabStyle.Primary,
+    edgePadding: Dp = 0.dp,
     tabs: @Composable () -> Unit
 ) {
-    val outlineColor = MaterialTheme.colorScheme.outline
-    Box(
-        modifier = modifier
-            .background(MaterialTheme.colorScheme.background)
-            .drawBehind {
-                val borderSize = 2.dp.toPx()
-                val y = size.height - borderSize / 2
-                drawLine(
-                    color = outlineColor,
-                    start = Offset(0f, size.height),
-                    end = Offset(size.width, y),
-                    strokeWidth = borderSize
-                )
-            }
-            .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-    ) {
+    Box(Modifier.fillMaxWidth()) {
         TabRow(
             selectedTabIndex = selectedIndex,
             containerColor = Color.Transparent,
@@ -50,20 +38,34 @@ fun MovioTabRow(
                     modifier = Modifier.tabIndicatorOffset(tabPositions[selectedIndex])
                 )
             },
+            modifier = Modifier.padding(horizontal = edgePadding),
             tabs = tabs
+        )
+        HorizontalDivider(
+            color = DS.color.outline,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
         )
     }
 }
 
-
-
-//@Preview
-//@Composable
-//fun PreviewTabsComp() {
-//    AppTheme(changeSystemBarStyle = false) {
-//        TabsComp(
-//            selectedIndex = 0,
-//            onTabSelected = {}
-//        )
-//    }
-//}
+@Preview
+@Composable
+fun PreviewDSTabRow() {
+    AppTheme(changeSystemBarStyle = false) {
+        DSTabRow(
+            selectedIndex = 0,
+            edgePadding = 16.dp,
+            tabStyle = DSTabStyle.Primary
+        ) {
+            (0..2).map { i ->
+                DSTab(
+                    title = "Tab $i",
+                    selected = i == 0,
+                    onClick = {}
+                )
+            }
+        }
+    }
+}

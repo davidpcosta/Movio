@@ -1,9 +1,9 @@
 package me.davidcosta.movio.core.api.model
 
 import com.google.gson.annotations.SerializedName
-import me.davidcosta.movio.core.api.model.core.CountryModel
-import me.davidcosta.movio.core.api.model.core.GenreModel
-import me.davidcosta.movio.core.api.model.core.LanguageModel
+import me.davidcosta.movio.core.api.model.common.CountryModel
+import me.davidcosta.movio.core.api.model.common.GenreModel
+import me.davidcosta.movio.core.api.model.common.LanguageModel
 import java.time.LocalDate
 
 class MovieDetailsModel(

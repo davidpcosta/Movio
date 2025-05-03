@@ -1,6 +1,6 @@
 package me.davidcosta.movio.core.domain
 
-import me.davidcosta.movio.core.api.model.core.MediaTypeModel
+import me.davidcosta.movio.core.api.model.common.MediaTypeModel
 
 enum class MediaType {
     MOVIE,

@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import me.davidcosta.movio.core.domain.Title
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
@@ -25,13 +25,13 @@ fun HighlightRailComp(
     ) {
         HorizontalPager(
             state = pagerState,
-            pageSpacing = MaterialTheme.spacing.small,
-            contentPadding = PaddingValues(horizontal = MaterialTheme.spacing.horizontalMargin)
+            pageSpacing = DS.spacing.small,
+            contentPadding = PaddingValues(horizontal = DS.spacing.horizontalMargin)
         ) { page ->
             Row(
                 horizontalArrangement = Arrangement.Center
             ) {
-                HighlightComp(
+                DSHighlight(
                     highlightData = railHighlightData[page]
                 )
             }
@@ -45,15 +45,15 @@ fun HighlightRailComp(
 fun PreviewRailHighlightComp() {
     AppTheme(changeSystemBarStyle = false) {
         HighlightRailComp(
-            railHighlightData = listOf(
+            railHighlightData = (1..3).map { i ->
                 Title(
-                    title = "Adolescense",
+                    title = "Filme $i",
                     posterPath = "ponster.jpg",
                     thumbPath = "thumb.jpg",
                     voteAverage = "8,9",
                     releaseYear = "2025"
                 )
-            )
+            }
         )
     }
 }

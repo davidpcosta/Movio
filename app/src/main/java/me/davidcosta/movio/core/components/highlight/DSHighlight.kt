@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,10 +27,14 @@ import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DSScore
 import me.davidcosta.movio.core.domain.Title
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
+import me.davidcosta.movio.core.theme.shapes
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
-fun HighlightComp(
+fun DSHighlight(
     modifier: Modifier = Modifier,
     highlightData: Title
 ) {
@@ -42,7 +45,7 @@ fun HighlightComp(
         modifier = modifier
     ) {
         Surface(
-            shape = MaterialTheme.shapes.large,
+            shape = DS.shapes.large,
             modifier = Modifier
                 .width(width)
                 .height(height)
@@ -59,7 +62,7 @@ fun HighlightComp(
                 scoreData = highlightData.voteAverage,
                 modifier = Modifier
                     .wrapContentSize(align = Alignment.TopEnd)
-                    .padding(MaterialTheme.spacing.medium)
+                    .padding(DS.spacing.medium)
             )
             Box(
                 modifier = Modifier
@@ -69,20 +72,20 @@ fun HighlightComp(
                 Column(
                     verticalArrangement = Arrangement.Bottom,
                     modifier = Modifier
-                        .padding(MaterialTheme.spacing.medium)
+                        .padding(DS.spacing.medium)
                         .fillMaxSize()
                 ) {
                     Text(
                         text = highlightData.title,
-                        style = MaterialTheme.typography.displaySmall,
+                        style = DS.typography.displaySmall,
                         maxLines = 2,
-                        modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
+                        modifier = Modifier.padding(top = DS.spacing.tiny)
                     )
                     Text(
                         text = highlightData.releaseYear.orEmpty(),
-                        color = MaterialTheme.colorScheme.secondary,
-                        style = MaterialTheme.typography.titleSmall,
-                        modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
+                        color = DS.color.secondary,
+                        style = DS.typography.titleSmall,
+                        modifier = Modifier.padding(top = DS.spacing.tiny)
                     )
                 }
             }
@@ -100,12 +103,11 @@ private fun gradient(): Brush {
     )
 }
 
-
 @Preview
 @Composable
 fun PreviewHighlightComp() {
     AppTheme(changeSystemBarStyle = false) {
-        HighlightComp(
+        DSHighlight(
             highlightData =  Title(
                 title = "Adolescense",
                 posterPath = "ponster.jpg",

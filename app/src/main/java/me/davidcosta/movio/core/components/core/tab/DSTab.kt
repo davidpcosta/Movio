@@ -1,9 +1,13 @@
 package me.davidcosta.movio.core.components.core.tab
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSTab(
@@ -12,9 +16,9 @@ fun DSTab(
     onClick: () -> Unit
 ) {
     val style = if (selected) {
-        MaterialTheme.typography.headlineMedium
+        DS.typography.headlineMedium
     } else {
-        MaterialTheme.typography.bodyMedium
+        DS.typography.bodyMedium
     }
     Tab(
         text = {
@@ -24,7 +28,19 @@ fun DSTab(
             )
         },
         selected =  selected,
-        unselectedContentColor = MaterialTheme.colorScheme.onBackground,
+        unselectedContentColor = DS.color.onBackground,
         onClick = onClick
     )
+}
+
+@Preview
+@Composable
+fun PreviewDSTab() {
+    AppTheme(changeSystemBarStyle = false) {
+        DSTab(
+            title = "Tab 01",
+            selected = false,
+            onClick = {}
+        )
+    }
 }

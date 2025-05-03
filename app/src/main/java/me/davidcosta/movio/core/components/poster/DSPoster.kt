@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,12 +17,14 @@ import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Poster
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.shapes
 
 @Composable
 fun DSPoster(
     modifier: Modifier = Modifier,
     posterData: Poster,
-    posterSize: PosterSize = PosterSize.Small,
+    posterSize: DSPosterSize = DSPosterSize.Small,
     onPosterClick: (Int) -> Unit = {}
 ) {
     Box(
@@ -35,7 +36,7 @@ fun DSPoster(
         )
         {
             Surface (
-                shape = MaterialTheme.shapes.large,
+                shape = DS.shapes.large,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(posterSize.height)
@@ -60,7 +61,7 @@ fun DSPoster(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewPosterComp() {
+fun PreviewDSPoster() {
     AppTheme (changeSystemBarStyle = false) {
         DSPoster(
             posterData = Poster(

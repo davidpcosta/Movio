@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.core.components.DSVideo
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
@@ -27,10 +28,10 @@ fun MovieTrailersTab(
 
     LazyColumn(
         contentPadding = PaddingValues(
-            horizontal = MaterialTheme.spacing.horizontalMargin,
-            vertical = MaterialTheme.spacing.large
+            horizontal = DS.spacing.horizontalMargin,
+            vertical = DS.spacing.large
         ),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium),
+        verticalArrangement = Arrangement.spacedBy(DS.spacing.medium),
         modifier = Modifier.fillMaxSize()
     ) {
         items(movieTrailersViewModel.movieVideos.value) { video ->

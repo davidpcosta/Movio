@@ -1,7 +1,7 @@
 package me.davidcosta.movio.core.api.model.person
 
 import com.google.gson.annotations.SerializedName
-import me.davidcosta.movio.core.api.model.core.MediaTypeModel
+import me.davidcosta.movio.core.api.model.common.MediaTypeModel
 import java.time.LocalDate
 
 data class PersonCreditModel(

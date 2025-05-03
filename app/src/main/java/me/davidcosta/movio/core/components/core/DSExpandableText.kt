@@ -4,7 +4,6 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,13 +18,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import me.davidcosta.movio.R
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSExpandableText(
     modifier: Modifier = Modifier,
     text: String,
-    textColor: Color = MaterialTheme.colorScheme.secondary,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    textColor: Color = DS.color.secondary,
+    textStyle: TextStyle = DS.typography.bodyMedium,
     showMoreText: String = stringResource(R.string.expandable_text_label_show_more),
     showLessText: String = stringResource(R.string.expandable_text_label_show_less),
     collapsedMaxLine: Int = 3,
@@ -34,8 +36,8 @@ fun DSExpandableText(
     var clickable by remember { mutableStateOf(false) }
     var lastCharIndex by remember { mutableIntStateOf(0) }
 
-    val suffixStyle = MaterialTheme.typography.headlineSmall.toSpanStyle().copy(
-        color = MaterialTheme.colorScheme.onBackground
+    val suffixStyle = DS.typography.headlineSmall.toSpanStyle().copy(
+        color = DS.color.onBackground
     )
     val ellipsis = "..."
 

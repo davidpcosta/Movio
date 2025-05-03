@@ -36,9 +36,10 @@ import kotlinx.coroutines.launch
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.components.core.DSTopBar
 import me.davidcosta.movio.core.components.core.tab.DSTab
-import me.davidcosta.movio.core.components.core.tab.MovioTabRow
-import me.davidcosta.movio.core.components.core.tab.TabStyle
+import me.davidcosta.movio.core.components.core.tab.DSTabRow
+import me.davidcosta.movio.core.components.core.tab.DSTabStyle
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.person.tabs.PersonScreenTabs
 import me.davidcosta.movio.person.tabs.Screen
@@ -66,56 +67,53 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                     scrollBehavior = scrollBehavior,
                     expandedHeight = 170.dp,
                     collapsedTitle = personCredit.name,
-                    navigateBack = {
-                        navHostController.popBackStack()
-                    },
-                    expandedTitle = {
-                        Row(
-                            modifier = Modifier
-                                .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
-                            verticalAlignment = Alignment.CenterVertically
+                    navHostController = navHostController
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .padding(horizontal = DS.spacing.horizontalMargin),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            shape = CircleShape,
+                            modifier = Modifier.size(120.dp)
                         ) {
-                            Surface(
-                                shape = CircleShape,
-                                modifier = Modifier.size(120.dp)
-                            ) {
-                                AsyncImage(
-                                    model = personCredit.profilePath,
-                                    contentDescription = stringResource(
-                                        R.string.person_details_screen_content_description_profile,
-                                        personCredit.name
-                                    ),
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier.fillMaxSize()
+                            AsyncImage(
+                                model = personCredit.profilePath,
+                                contentDescription = stringResource(
+                                    R.string.person_details_screen_content_description_profile,
+                                    personCredit.name
+                                ),
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        }
+                        Column(
+                            modifier = Modifier.padding(
+                                start = DS.spacing.medium
+                            )
+                        ) {
+                            Text(
+                                style = MaterialTheme.typography.displaySmall,
+                                text = personCredit.name
+                            )
+                            personCredit.birthday?.let {
+                                Text(
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.secondary,
+                                    text = it
                                 )
                             }
-                            Column(
-                                modifier = Modifier.padding(
-                                    start = MaterialTheme.spacing.medium
-                                )
-                            ) {
+                            personCredit.placeOfBirth?.let {
                                 Text(
-                                    style = MaterialTheme.typography.displaySmall,
-                                    text = personCredit.name
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.secondary,
+                                    text = it
                                 )
-                                personCredit.birthday?.let {
-                                    Text(
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.secondary,
-                                        text = it
-                                    )
-                                }
-                                personCredit.placeOfBirth?.let {
-                                    Text(
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.secondary,
-                                        text = it
-                                    )
-                                }
                             }
                         }
                     }
-                )
+                }
             }
         }
     ) { innerPadding ->
@@ -125,9 +123,9 @@ fun PersonDetailsScreen(navHostController: NavHostController) {
                     .padding(innerPadding)
                     .fillMaxSize()
             ) {
-                MovioTabRow(
+                DSTabRow(
                     selectedIndex = selectedIndex,
-                    tabStyle = TabStyle.Secondary
+                    tabStyle = DSTabStyle.Secondary
                 ) {
                     PersonScreenTabs.entries.forEachIndexed { index, tab ->
                         DSTab(

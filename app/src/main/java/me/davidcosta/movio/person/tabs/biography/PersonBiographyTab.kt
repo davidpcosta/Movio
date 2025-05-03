@@ -17,6 +17,7 @@ import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Person
 import me.davidcosta.movio.core.domain.label
 import me.davidcosta.movio.core.domain.labelKnownAs
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.spacing
 import me.davidcosta.movio.core.utils.orDefault
 
@@ -25,19 +26,19 @@ fun PersonBiographyTab(person: Person) {
     Column(
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
-            .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-            .padding(bottom = MaterialTheme.spacing.medium)
+            .padding(horizontal = DS.spacing.horizontalMargin)
+            .padding(bottom = DS.spacing.medium)
             .verticalScroll(rememberScrollState())
             .fillMaxSize()
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
+            horizontalArrangement = Arrangement.spacedBy(DS.spacing.small)
         ) {
             Column(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.large),
+                    modifier = Modifier.padding(top = DS.spacing.large),
                     text = stringResource(R.string.person_details_screen_tab_biography_label_gender),
                     style = MaterialTheme.typography.headlineLarge,
                 )
@@ -45,14 +46,14 @@ fun PersonBiographyTab(person: Person) {
                     text = person.gender.label(),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.small)
+                    modifier = Modifier.padding(top = DS.spacing.small)
                 )
             }
             Column(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.large),
+                    modifier = Modifier.padding(top = DS.spacing.large),
                     text = person.gender.labelKnownAs(),
                     style = MaterialTheme.typography.headlineLarge,
                 )
@@ -60,12 +61,12 @@ fun PersonBiographyTab(person: Person) {
                     text = person.knownForDepartment,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.small)
+                    modifier = Modifier.padding(top = DS.spacing.small)
                 )
             }
         }
         Text(
-            modifier = Modifier.padding(top = MaterialTheme.spacing.large),
+            modifier = Modifier.padding(top = DS.spacing.large),
             text = stringResource(R.string.person_details_screen_tab_biography_label_bio),
             style = MaterialTheme.typography.headlineLarge,
         )
@@ -73,16 +74,16 @@ fun PersonBiographyTab(person: Person) {
             text = person.biography.orDefault(stringResource(R.string.common_label_biography_unavailable)),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(top = MaterialTheme.spacing.small)
+            modifier = Modifier.padding(top = DS.spacing.small)
         )
         person.alsoKnownAs?.takeUnless { it.isEmpty() }?.let {
             Text(
-                modifier = Modifier.padding(top = MaterialTheme.spacing.large),
+                modifier = Modifier.padding(top = DS.spacing.large),
                 text = stringResource(R.string.person_details_screen_tab_biography_label_also_known_as_female),
                 style = MaterialTheme.typography.headlineLarge,
             )
             Box(
-                modifier = Modifier.padding(top = MaterialTheme.spacing.small)
+                modifier = Modifier.padding(top = DS.spacing.small)
             ) {
                 Column {
                     person.alsoKnownAs.forEach { name ->

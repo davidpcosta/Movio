@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,7 +25,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
@@ -44,7 +46,7 @@ fun TvShowEpisodesTab(
     ) {
 
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.tiny)
+            verticalArrangement = Arrangement.spacedBy(DS.spacing.tiny)
         ) {
             items(episodesViewModel.episodes.value) { episode ->
                 var isVisible by remember { mutableStateOf(false) }
@@ -57,14 +59,14 @@ fun TvShowEpisodesTab(
                     Column {
                         Row(
                             modifier = Modifier
-                                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                                .padding(vertical = MaterialTheme.spacing.small)
+                                .padding(horizontal = DS.spacing.horizontalMargin)
+                                .padding(vertical = DS.spacing.small)
                         ) {
                             Surface(
                                 shape = MaterialTheme.shapes.small,
                                 modifier = Modifier
                                     .width(150.dp).height(84.dp)
-                                    .padding(end = MaterialTheme.spacing.medium)
+                                    .padding(end = DS.spacing.medium)
                             ) {
                                 AsyncImage(
                                     model = episode.stillPath,
@@ -79,20 +81,20 @@ fun TvShowEpisodesTab(
                             }
                             Column {
                                 Text(
-                                    style = MaterialTheme.typography.titleSmall,
+                                    style = DS.typography.titleSmall,
                                     text = "${episode.episodeNumber}. ${episode.name}"
                                 )
                                 episode.airDate?.let {
                                     Text(
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.secondary,
+                                        style = DS.typography.bodySmall,
+                                        color = DS.color.secondary,
                                         text = it
                                     )
                                 }
                                 episode.runtime?.let {
                                     Text(
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.secondary,
+                                        style = DS.typography.bodySmall,
+                                        color = DS.color.secondary,
                                         text = it
                                     )
                                 }
@@ -101,8 +103,8 @@ fun TvShowEpisodesTab(
                         AnimatedVisibility(visible = isVisible) {
                             Row(
                                 modifier = Modifier
-                                    .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
-                                    .padding(bottom = MaterialTheme.spacing.small)
+                                    .padding(horizontal = DS.spacing.horizontalMargin)
+                                    .padding(bottom = DS.spacing.small)
                             ) {
                                 Text(
                                     style = MaterialTheme.typography.bodyMedium,
@@ -116,49 +118,4 @@ fun TvShowEpisodesTab(
             }
         }
     }
-
-//    if (showBottomSheet) {
-//        ModalBottomSheet(
-//            onDismissRequest = {
-//                showBottomSheet = false
-//            },
-//            sheetState = bottomSheetState
-//        ) {
-//            Box(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(bottom = MaterialTheme.spacing.medium)
-//            ) {
-//                LazyColumn(
-//                    modifier = Modifier.fillMaxWidth()
-//                ) {
-//                    items(tvShow.seasons) { season ->
-//                        Row(
-//                            verticalAlignment = Alignment.CenterVertically,
-//                            modifier = Modifier.clickable {
-//                                selectSeason(season)
-//                            }
-//                        ) {
-//                            RadioButton(
-//                                selected = season.id == selectedSeason.id,
-//                                onClick = {
-//                                    selectSeason(season)
-//                                }
-//                            )
-//                            Text(
-//                                text = season.name,
-//                                modifier = Modifier
-//                                    .weight(1f)
-//                                    .padding(
-//                                        horizontal = MaterialTheme.spacing.horizontalMargin,
-//                                        vertical = MaterialTheme.spacing.small
-//                                    )
-//                            )
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
 }

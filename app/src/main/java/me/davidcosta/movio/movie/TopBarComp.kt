@@ -22,15 +22,19 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import me.davidcosta.movio.R
-import me.davidcosta.movio.core.components.core.DSTopBar
 import me.davidcosta.movio.core.components.core.DSDotSeparator
-import me.davidcosta.movio.core.components.poster.PosterSize
+import me.davidcosta.movio.core.components.core.DSTopBar
+import me.davidcosta.movio.core.components.poster.DSPosterSize
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.Icons
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 import me.davidcosta.movio.core.utils.orDefault
 
 @ExperimentalMaterial3Api
@@ -38,14 +42,14 @@ import me.davidcosta.movio.core.utils.orDefault
 fun TopBarComp(
     scrollBehavior: TopAppBarScrollBehavior,
     movie: Movie?,
-    navigateBack: () -> Unit
+    navHostController: NavHostController
 ) {
     movie?.let {
         DSTopBar(
             scrollBehavior = scrollBehavior,
-            navigateBack = navigateBack,
+            navHostController = navHostController,
             collapsedTitle = movie.title,
-            expandedTitle = {
+            content = {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
@@ -62,22 +66,22 @@ fun TopBarComp(
                                 movie.title
                             ),
                             modifier = Modifier
-                                .width(PosterSize.Medium.width)
-                                .height(PosterSize.Medium.height)
+                                .width(DSPosterSize.Medium.width)
+                                .height(DSPosterSize.Medium.height)
                         )
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .padding(top = MaterialTheme.spacing.small)
+                            .padding(top = DS.spacing.small)
                     ) {
                         Text(
                             text = movie.releaseYear.orDefault("-"),
-                            style = MaterialTheme.typography.titleMedium
+                            style = DS.typography.titleMedium
                         )
                         DSDotSeparator(
                             modifier = Modifier
-                                .padding(horizontal = MaterialTheme.spacing.small)
+                                .padding(horizontal = DS.spacing.small)
                         )
                         Text(
                             text = movie.runtime,
@@ -85,7 +89,7 @@ fun TopBarComp(
                         )
                         DSDotSeparator(
                             modifier = Modifier
-                                .padding(horizontal = MaterialTheme.spacing.small)
+                                .padding(horizontal = DS.spacing.small)
                         )
                         Icon(
                             imageVector = Icons.StarRate,
@@ -93,11 +97,11 @@ fun TopBarComp(
                             contentDescription = stringResource(R.string.movie_detail_screen_content_description_icon_rate),
                             modifier = Modifier
                                 .size(dimensionResource(R.dimen.movie_detail_icon_rate_size))
-                                .padding(end = MaterialTheme.spacing.small)
+                                .padding(end = DS.spacing.small)
                         )
                         Text(
                             text = movie.voteAverage,
-                            style = MaterialTheme.typography.titleMedium
+                            style = DS.typography.titleMedium
                         )
                     }
                 }
@@ -123,7 +127,7 @@ private fun PreviewTopBarComp() {
                 voteAverage = "2,9",
                 genres = emptyList()
             ),
-            navigateBack = {}
+            navHostController = rememberNavController()
         )
     }
 }

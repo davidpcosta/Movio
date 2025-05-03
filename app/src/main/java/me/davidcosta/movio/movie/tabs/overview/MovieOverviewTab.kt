@@ -27,7 +27,10 @@ import me.davidcosta.movio.core.components.core.DSGenre
 import me.davidcosta.movio.core.components.person.DSPerson
 import me.davidcosta.movio.core.domain.Movie
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 import me.davidcosta.movio.core.utils.orDefault
 
 @Composable
@@ -45,10 +48,10 @@ fun MovieOverviewTab(
             .verticalScroll(rememberScrollState())
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            horizontalArrangement = Arrangement.spacedBy(DS.spacing.small),
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.large)
-                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                .padding(top = DS.spacing.large)
+                .padding(horizontal = DS.spacing.horizontalMargin)
                 .fillMaxWidth()
         ) {
             Column(
@@ -59,7 +62,7 @@ fun MovieOverviewTab(
                     style = MaterialTheme.typography.headlineLarge,
                 )
                 Text(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.small),
+                    modifier = Modifier.padding(top = DS.spacing.small),
                     text = movie.title,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary
@@ -73,35 +76,35 @@ fun MovieOverviewTab(
                     style = MaterialTheme.typography.headlineLarge,
                 )
                 Text(
-                    modifier = Modifier.padding(top = MaterialTheme.spacing.small),
+                    modifier = Modifier.padding(top = DS.spacing.small),
                     text = movie.originalTitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
+                    style = DS.typography.bodyMedium,
+                    color = DS.color.secondary
                 )
             }
         }
         Text(
             text = stringResource(R.string.movie_detail_screen_tab_related_label_overview),
-            style = MaterialTheme.typography.headlineLarge,
+            style = DS.typography.headlineLarge,
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.large)
-                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                .padding(top = DS.spacing.large)
+                .padding(horizontal = DS.spacing.horizontalMargin)
         )
         Text(
             text = movie.overview.orDefault(stringResource(R.string.common_label_overview_unavailable)),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.secondary,
+            style = DS.typography.bodyMedium,
+            color = DS.color.secondary,
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.small)
-                .padding(horizontal = MaterialTheme.spacing.horizontalMargin),
+                .padding(top = DS.spacing.small)
+                .padding(horizontal = DS.spacing.horizontalMargin),
         )
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            horizontalArrangement = Arrangement.spacedBy(DS.spacing.small),
             contentPadding = PaddingValues(
-                horizontal = MaterialTheme.spacing.horizontalMargin
+                horizontal = DS.spacing.horizontalMargin
             ),
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.medium)
+                .padding(top = DS.spacing.medium)
         ) {
             items(movie.genres) { genre ->
                 DSGenre(text = genre)
@@ -111,16 +114,16 @@ fun MovieOverviewTab(
             text = stringResource(R.string.movie_detail_screen_tab_related_label_cast_and_crew),
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.large)
-                .padding(horizontal = MaterialTheme.spacing.horizontalMargin)
+                .padding(top = DS.spacing.large)
+                .padding(horizontal = DS.spacing.horizontalMargin)
         )
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+            horizontalArrangement = Arrangement.spacedBy(DS.spacing.small),
             contentPadding = PaddingValues(
-                horizontal = MaterialTheme.spacing.horizontalMargin
+                horizontal = DS.spacing.horizontalMargin
             ),
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.medium)
+                .padding(top = DS.spacing.medium)
         ) {
             items(movieOverviewViewModel.movieCharacter.value) { person ->
                 DSPerson(

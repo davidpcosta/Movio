@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +17,11 @@ import coil.compose.AsyncImage
 import me.davidcosta.movio.R
 import me.davidcosta.movio.core.domain.Character
 import me.davidcosta.movio.core.theme.AppTheme
+import me.davidcosta.movio.core.theme.DS
+import me.davidcosta.movio.core.theme.color
+import me.davidcosta.movio.core.theme.shapes
 import me.davidcosta.movio.core.theme.spacing
+import me.davidcosta.movio.core.theme.typography
 
 @Composable
 fun DSPerson(
@@ -31,7 +34,7 @@ fun DSPerson(
             .width(dimensionResource(R.dimen.people_profile_size))
     ) {
         Surface (
-            shape = MaterialTheme.shapes.large,
+            shape = DS.shapes.large,
             modifier = Modifier
                 .size(dimensionResource(R.dimen.people_profile_size))
                 .clickable {
@@ -51,21 +54,21 @@ fun DSPerson(
         }
         Text(
             text = characterData.name,
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(top = MaterialTheme.spacing.small)
+            style = DS.typography.headlineMedium,
+            modifier = Modifier.padding(top = DS.spacing.small)
         )
         Text(
             text = characterData.character,
-            style = MaterialTheme.typography.titleSmall,
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(top = MaterialTheme.spacing.tiny)
+            style = DS.typography.titleSmall,
+            color = DS.color.secondary,
+            modifier = Modifier.padding(top = DS.spacing.tiny)
         )
     }
 }
 
 @Preview
 @Composable
-fun PersonCompPreview() {
+fun PreviewDSPerson() {
     AppTheme(changeSystemBarStyle = false) {
         DSPerson(
             characterData = Character(

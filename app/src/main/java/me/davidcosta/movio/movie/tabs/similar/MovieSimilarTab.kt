@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,7 +15,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import me.davidcosta.movio.MovieScreenRoute
 import me.davidcosta.movio.core.components.poster.DSPoster
-import me.davidcosta.movio.core.components.poster.PosterSize
+import me.davidcosta.movio.core.components.poster.DSPosterSize
+import me.davidcosta.movio.core.theme.DS
 import me.davidcosta.movio.core.theme.spacing
 
 @Composable
@@ -27,12 +27,12 @@ fun MovieSimilarTab(
     val movieSimilarViewModel = viewModel<MovieSimilarViewModel>()
 
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = PosterSize.Medium.width),
-        verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
-        horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
+        columns = GridCells.Adaptive(minSize = DSPosterSize.Medium.width),
+        verticalArrangement = Arrangement.spacedBy(DS.spacing.small),
+        horizontalArrangement = Arrangement.spacedBy(DS.spacing.small),
         contentPadding = PaddingValues(
-            horizontal = MaterialTheme.spacing.horizontalMargin,
-            vertical = MaterialTheme.spacing.large
+            horizontal = DS.spacing.horizontalMargin,
+            vertical = DS.spacing.large
         ),
         modifier = Modifier.fillMaxSize()
     ) {
@@ -42,7 +42,7 @@ fun MovieSimilarTab(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                DSPoster(posterData = poster, posterSize = PosterSize.Medium) { id ->
+                DSPoster(posterData = poster, posterSize = DSPosterSize.Medium) { id ->
                     navHostController.navigate(
                         MovieScreenRoute(movieId = id)
                     )

@@ -1,4 +1,4 @@
-package me.davidcosta.movio.core.api.model.core
+package me.davidcosta.movio.core.api.model.common
 
 import com.google.gson.annotations.SerializedName
 
